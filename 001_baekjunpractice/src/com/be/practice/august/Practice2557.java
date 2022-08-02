@@ -7,5 +7,6 @@ public class Practice2557 {
 		//dd
 		//sadsa
 		System.out.println();
+		System.out.println();
 	}
 }
