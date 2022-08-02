@@ -5,5 +5,7 @@ public class Practice2557 {
 		System.out.println("Hello World!");
 	//ㅇㅇ
 		//dd
+		//sadsa
+		System.out.println();
 	}
 }
