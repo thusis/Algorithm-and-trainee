@@ -1,4 +1,4 @@
-package com.be.practice.august;
+package com.be.practice.step1.august;
 
 public class Practice2557 {
 	public static void main(String[] args) {
