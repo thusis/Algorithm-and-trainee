@@ -1,4 +1,4 @@
-package com.be.practice.step1.august;
+package com.be.practice.step1_ioAndOperator;
 
 import java.util.Scanner;
 

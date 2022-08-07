@@ -1,4 +1,4 @@
-package com.be.practice.step1.august;
+package com.be.practice.step1_ioAndOperator;
 
 public class Pratice10781 {
 	public static void main(String[] args) {
