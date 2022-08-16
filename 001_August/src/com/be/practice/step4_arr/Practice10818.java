@@ -8,17 +8,20 @@ public class Practice10818 {
 
 		int N = sc.nextInt();
 		int arr[] = new int[N];
+		
+		arr[0] = sc.nextInt();
 		int Max = arr[0];
 		int Min = arr[0];
+		
 		if (N >= 1 && N <= 1000000) {
-			for (int i = 0; i < N; i++) {
+			
+			for (int i = 1; i < N; i++) {
 				arr[i] = sc.nextInt();
 				if (arr[i] > Max) {
 					Max = arr[i];
 				} else if (arr[i] < Min) {
 					Min = arr[i];
 				}
-				System.out.println(Min +" "+ Max);
 			}
 		}
 		System.out.println(Min + " " + Max);
