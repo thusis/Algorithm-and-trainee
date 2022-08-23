@@ -48,36 +48,42 @@ public class Practice4673 {
 		ArrayList<Integer> d = new ArrayList<Integer>();		
 		ArrayList<Integer> notd = new ArrayList<Integer>();
 		
-		for(int i = 1; i<=100; i++) {
+		for(int i = 1; i<=10000; i++) {
 			int n;
 			int a;
 			int b;
+			int c;
+			int e;
 			int dn;
-			
+
 			n = i;
-			a = n/10;
-			b = n-a*10;
-			dn = n + a + b;
+			a = n / 1000;
+			b = ( n - 1000*a ) / 100;
+			c = ( n - 1000*a - 100*b ) / 10;
+			e = n - 1000*a - 100*b - 10*c ;
+			dn = n + a + b + c + e ;
 			
-			if(dn<=100 && !d.contains(dn)) {
+			if(dn<=10000 && !d.contains(dn)) {
 				d.add(dn);
 			}
 		}
 		
-		System.out.println(d + " " + d.size());
-
-		for(Integer i : d ) {
-		    System.out.println(i);
-		}
+//		System.out.println(d + " " + d.size());
+//
+//		for(Integer i : d ) {
+//		    System.out.println(i);
+//		}
 		
 		//d의 각 요소와의 일치여부를 이용해서(index아님) d가 포함하지 않은 값 notD에 넣기
-		for(int i = 1; i<=100 ; i++) {
+		for(int i = 1; i<=10000 ; i++) {
 			if(!d.contains(i)) {
 				notd.add(i);
 			}
 		}
 		
-		System.out.println(notd + " " + notd.size());
+		for(Integer i : notd ) {
+			System.out.println(i);
+		}
 		
 		//위의 식들 이용해서 ~100 말고, ~10,000까지 다시 계산해보자! 굿
 		
