@@ -17,6 +17,7 @@ public class Practice11720 {
 		
 		System.out.println(sum);
 		
+		
 	}
 
 }
