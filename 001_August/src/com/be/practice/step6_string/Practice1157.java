@@ -20,18 +20,17 @@ public class Practice1157 {
 		}
 		
 		int temp = 0;
-		int index =0 ;
+		int index = 0 ;
 		boolean same = false;
 		for(int i=0; i<count.length; i++) {
-			for(int j=i+1; j<count.length; j++) {
-				if(count[i]<count[j]) {
-					break;
-				} else if(count[i]>=count[j]) {
-					temp=count[i];
-					index = i;
-					if(count[i] == count[j]) {
-						same = true;
+			for(int j=i+1; j<count.length; ) {
+				if(count[i]>=count[j]) {
+					if(j == count.length-1) {
+						temp = count[i];
 					}
+					j++;
+				} else if(count[i]<count[j]) {
+					break;
 				} 	
 			}
 		}
