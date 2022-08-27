@@ -28,7 +28,7 @@ public class Practice5622 {
 			case 'W' : case 'X' : case 'Y' : case 'Z': //9
 				second += 10; break;
 			}
-			
+	
 		}
 		System.out.println(second);
 	}
