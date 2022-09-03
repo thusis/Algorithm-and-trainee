@@ -2,7 +2,7 @@ package com.be.practice.step7_number;
 
 import java.util.Scanner;
 
-public class Practice2292 {
+public class Practice2292 { 
 	public static void main(String[] args) {
 		
 /*겉을 감싼 수의 개수
