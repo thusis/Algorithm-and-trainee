@@ -11,42 +11,21 @@ public class Practice2839 {
 			int result = 0;			
 			int b5;
 			int b3;
-			
-			
-			// num == 5*b5 + 3*b3 이면 봉지개수 구하기
-			// num != 5*b5 + 3*b3 이면 -1
-			
-			for(int i)
-			if( num == 5a + 3b ) {
-				
-			} else {
+
+			if( num%5 != 0 && num%3 != 0 && ((int)(num%5))%3 != 0 && ((int)(num%3))%5 !=0 ) {
 				result = -1;
+			} else if(num%5 == 0) {
+				result = (int) (num/5);
+			} else if((num%5)%3 != 0) {
+				b5 = (int)(num/5);
+				result = (int)(num/5) + (int)(num%5)/3;
+			} else if(num%3 != 0) {
+				result = (int) (num/3);
+			} else if((num%3)%5 !=0) {
+				result = (int) (num/3) + (int)(num%3)/5;
 			}
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			if((num % 5) == 0 ) { //5의 배수일 때
-				result = (int)(num/5);
-			} else if((num % 5) % 3 == 0 ) { //5로 나눈 나머지가 3의 배수일 때
-				int bongi5 = (int) (num / 5);
-				int bongi3 = (int) (num % 5) / 3;
-				result = bongi5 + bongi3;
-			}else if((num%3) == 0) { //3의 배수일 때
-				result = (int)(num/3);
-			} else if((num%3)%5 == 0) {
-				int bongi3 = (int)(num/3);
-				int bongi5 = (int)(num%3)/5;
-			} else {
-				result = -1;
-			}
 			System.out.println(result);
-			
 		}
 	}
 }
