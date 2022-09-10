@@ -16,70 +16,43 @@ public class Practice8958 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 	
-		int t = sc.nextInt();
-		int point = 0;
-		for(int i = 0 ; i<t ; i++) {
-			String s = sc.nextLine();
-			
-			for( int j = 0; j<s.length(); j++ )	{
-				
-				char ans = s.toUpperCase().charAt(j);
-				
-					if(ans == 'O') {
-						point++;
-					}
-					while
-				
-			}
-		}
+		int t = Integer.parseInt(sc.nextLine());
 		
+		for(int i = 0 ; i<t ; i++) {
+			int point = 0;
+			int plus = 0;
+			String s = sc.nextLine();
+			for( int j = 0; j<s.length(); j++ )	{
+				char ans = s.toUpperCase().charAt(j);
+					if(ans == 'O') {
+						plus ++ ; point += plus;
+					} else {
+						plus = 0;
+					}
+			}
+			System.out.println(point);
+		}
 	}
-	
-	
-	
-	
 //	public static void main(String[] args) {
 //		Scanner sc = new Scanner(System.in);
-//		
-//		int N = sc.nextInt();//테스트 케이스의 개수
-//		String test[] = new String[N];
-//		if(N>0 && N<=80) { //N의 범위 정해줌.
-//			
-//			for(int i=0 ; i<test.length ; i++) {
-//				
-//				test[i] = sc.next(); 
-//				char testChar[] = new char[test[i].length()]; //각각의 String 마다 charAt 이용해 char 배열로 담고, 점수 추출까지 하자.
-//				for(int j=0; j<test[i].length(); j++) {
-//					testChar[j]	= test[i].charAt(j);
-//					System.out.print(testChar[j] + " ");
-//				}
-//				System.out.println();
-//				
-//				int scoreArr[] = new int[test[i].length()] ; //char[] 에 대한 점수 int[]로 담아야함.
-//				int score = 0;				
-//				for (int j = 0; j < testChar.length; j++) {
-//					if(testChar[j]=='O') {
-//						score+=1;
-//						for (int k = 1; j+k <testChar.length; k++) { 
-//							if (testChar[j+k] == 'O') { 
-//								score += k+1;
-//							} else if(testChar[j+k]=='X') {
-//								System.out.println(j+k+"번째 문자가 'X' 라서 k반복문 out.");
-//								j = j+k;
-//								break;
-////								testChar[j] = 'X';
-//							}
-//							j=j+k;
-//						}
+//	
+//		int t = Integer.parseInt(sc.nextLine());
+//		for(int i = 0 ; i<t ; i++) {
+//			int point = 0;
+//			int plus = 0;
+//			System.out.print("입력 : ");
+//			String s = sc.nextLine();
+//			for( int j = 0; j<s.length(); j++ )	{
+//
+//				char ans = s.toUpperCase().charAt(j);
+//					if(ans == 'O') {
+//						plus ++ ;
+//						point += plus;
+//					} else {
+//						plus = 0;
 //					}
-////					break;
-//					System.out.println(j+"번째 문자에 대한 점수 집계 : " + score);
-//					//==여기까지 점수 구하는 구간*
-//				}
-//				scoreArr[i] = score;
-//				System.out.print("scoreArr[" + i + "] : " + scoreArr[i] + " ");
-//				}
+//					System.out.println( j +"번째 포인트 : " + point +", 플러스점 : " + plus +"");
 //			}
-//		
+//		}
 //	}
 }
