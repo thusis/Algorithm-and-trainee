@@ -1,5 +1,5 @@
 package com.be.practice.step4_arr;
-
+//평균은 넘겠지
 import java.util.ArrayList;
 import java.util.Scanner;
 
