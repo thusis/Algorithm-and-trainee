@@ -28,26 +28,25 @@ public class Practice4948 {
 		char maxKey = '\0';
 		String result=null;
 
-		Set key = countMap.keySet();
-		for(Iterator iterator = key.iterator(); iterator.hasNext();){
+		Set<Character> key = countMap.keySet();
+		for(Iterator<Character> iterator = key.iterator(); iterator.hasNext();){
 			char keyValue = (char)iterator.next();
 			int valueVar = countMap.get(keyValue);
-			if(valueVar > max){
-				max = valueVar;
+			
+			if(valueVar > max){ 
+				max = valueVar; 
 				maxKey = keyValue;	
+				result = null;
 			} else if (valueVar == max){
 				max = valueVar;
 				maxKey = keyValue;	
 				result = "?";
 			}
 		}
-		
 		if(result!=null) {
 			System.out.println(result);
 		} else {
 			System.out.println(maxKey);
 		}
-
-		
 	}
 }
