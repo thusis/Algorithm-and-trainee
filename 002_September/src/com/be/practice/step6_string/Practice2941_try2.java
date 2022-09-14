@@ -1,8 +1,8 @@
-package com.be.practice.step7_number;
+package com.be.practice.step6_string;
 
 import java.util.Scanner;
 
-public class Practice2941 {
+public class Practice2941_try2 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		String str = sc.nextLine().toLowerCase();

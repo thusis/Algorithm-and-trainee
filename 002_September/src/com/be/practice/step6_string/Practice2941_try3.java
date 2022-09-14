@@ -1,4 +1,4 @@
-package com.be.practice.step7_number;
+package com.be.practice.step6_string;
 
 import java.util.Scanner;
 

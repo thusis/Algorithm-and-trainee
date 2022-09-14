@@ -1,8 +1,8 @@
-package com.be.practice.step7_number;
+package com.be.practice.step6_string;
 
 import java.util.Scanner;
 
-public class Practice2941_base {
+public class Practice2941_try1 {
 	public static void main(String[] args) {
 		
 		//일단 반례는 다 맞거든 ㅠㅠ
