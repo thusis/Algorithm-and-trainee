@@ -23,6 +23,9 @@ public class Practice11650 {
 		
 		int max=0;
 		int min=100000;
+		int temp;
+		
+//		temp에 값 저장하고..
 		for(int i=0; i<n; i++) {
 			if(max<arrX.get(i)) {
 				
