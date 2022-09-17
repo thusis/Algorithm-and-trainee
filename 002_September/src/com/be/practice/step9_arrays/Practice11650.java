@@ -21,8 +21,12 @@ public class Practice11650 {
 			arrY.add(sc.nextInt());
 		}
 		
+		int max=0;
+		int min=100000;
 		for(int i=0; i<n; i++) {
-			
+			if(max<arrX.get(i)) {
+				
+			}
 		}
 	
 	}
