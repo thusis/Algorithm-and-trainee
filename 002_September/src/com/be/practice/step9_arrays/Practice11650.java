@@ -12,26 +12,27 @@ public class Practice11650 {
 		int n = Integer.parseInt(sc.nextLine());
 		//점의 개수 n
 		
-		ArrayList<Integer> arrX = new ArrayList<Integer>();
-		ArrayList<Integer> arrY = new ArrayList<Integer>();
+		//정수형 배열을 X배열, Y배열 두 개 선언하고 받으려 했으나 어려울 것 같아.
+		//문자열형 배열을 받은 후에 이를 정렬하는 과정에서 각 글자씩 뽑아서 배열에 순서대로 집어넣자.
 		
-		for(int i =0; i<n ; i++) {
-			// i 번점의 위치 x와 y
-			arrX.add(sc.nextInt());
-			arrY.add(sc.nextInt());
+//		ArrayList<String> temp = new ArrayList<String>();
+		String temp[] = new String[n];
+		
+		
+		for(int i=0; i<n; i++) {
+			temp[i]=sc.nextLine();
 		}
 		
-		int max=0;
-		int min=100000;
-		int temp;
-		
-//		temp에 값 저장하고..
-		for(int i=0; i<n; i++) {
-			if(max<arrX.get(i)) {
-				
+		for(int i = 0; i<n; i++) {
+			for(int j = 0 ; j <n ; j ++) {
+				if(Integer.parseInt(temp[i].charAt(0)+"")<Integer.parseInt(temp[j].charAt(0)+"")) {
+					
+				}
 			}
 		}
-	
-	}
+		
+		
+		
+		}
 
 }
