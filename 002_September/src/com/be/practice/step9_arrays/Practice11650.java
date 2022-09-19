@@ -1,10 +1,9 @@
 package com.be.practice.step9_arrays;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Practice11650 {
-	public static void main(String[] args) {
+	public void try1() {
 		Scanner sc = new Scanner(System.in);
 		//1. x 좌표가 증가하는 순으로
 		//2. x좌표가 같으면  y 좌표가 증가하는 순으로 정렬
@@ -35,4 +34,45 @@ public class Practice11650 {
 		
 		}
 
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n = Integer.parseInt(sc.nextLine());
+		String[] temp = new String[n];
+		int[] xArr = new int[n];
+		int[] yArr = new int[n];
+		
+		for(int i = 0; i<temp.length; i++) {
+			temp[i] = sc.nextLine();
+//			xArr[i] = Integer.parseInt(temp[i].split(" ")[0]);
+//			yArr[i]	= Integer.parseInt(temp[i].split(" ")[1]);
+		}
+
+		
+		for(int i = 0; i<temp.length; i++) {
+			int xi = xArr[i];
+			int yi = yArr[i];
+			System.out.println(i + ": " + xi + ", " + yi);
+			
+			for(int j=i; j<temp.length; j++) {
+				String[] jArr = temp[j].split(" ");
+				int xj = Integer.parseInt(jArr[0]);
+				int yj = Integer.parseInt(jArr[1]);
+				
+				if(xi>=xj) {
+					String tmp = temp[i];
+					temp[i] = temp[j];
+					temp[j] = tmp;
+				} 
+//				else if(xi==xj) {
+//					if(yi>yj) {
+//						String tmp = temp[i];
+//						temp[i] = temp[j];
+//						temp[j] = tmp;
+//					}
+//				}
+			}
+			System.out.println(temp[i]);
+		}
+		
+	}
 }
