@@ -50,5 +50,11 @@ public class Practice10814 {
 			System.out.println(nameList.get(i) +member.get(nameList.get(i)));
 		}
 		
+        List<String> keyList = new ArrayList<>(map.keySet());
+        keyList.sort((s1, s2) -> s1.compareTo(s2));
+        for (String key : keyList) {
+            System.out.println("key: " + key + ", value: " + map.get(key));
+        }
+		
 
 	}}
