@@ -12,6 +12,8 @@ function getTime(){
     h1.textContent = time; //time을 h1 컨텐츠의 textContent에 대입
 }
 
+getTime()
+
 go.onclick = function(){
     if(handleId == 0){
         handleId = setInterval(getTime, 1000)
