@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>책 카테고리 선택</title>
+    <style>
+        form{
+            width:66%;
+        }
+        div{
+            border: 1px solid red;
+            width:66%; height:180px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Practice</h1>
+    <form action="">
+        <fieldset>
+            <legend>취미</legend>
+            <input type="checkbox" name="books" value="selectAll" onclick="selectAll();" id="SA"><label for="selectAll">전체선택</label></input>
+            <script>
+                function selectAll(){
+                    var selectAllBox = document.getElementById('SA');
+                    var selectAllBooks = document.getElementsByName('books');
+                    console.log(selectAllBox.value);
+                    if(selectAllBox.checked==true){
+                        for(var i = 0; i<selectAllBooks.length;i++){
+                            selectAllBooks[i].checked=true;
+                        }
+                    } else {
+                        for(var i = 0; i<selectAllBooks.length;i++){
+                            selectAllBooks[i].checked=false;
+                        }
+                    }
+//                console.log(selectAll_box);
+//                    if(selectAll_box.values.)
+                }
+            </script>
+            <input type="checkbox" name="books" value="common"><label for="common">종합</label></input>
+            <input type="checkbox" name="books" value="novel"><label for="novel">소설</label></input>
+            <input type="checkbox" name="books" value="poet"><label for="poet">시/에세이</label></input>
+            <input type="checkbox" name="books" value="economy"><label for="economy">경제/경영</label></input>
+            <input type="checkbox" name="books" value="selfDevelop"><label for="selfDevelop">자기계발</label></input>
+            <input type="checkbox" name="books" value="child"><label for="child">아동</label></input><br>
+            <input type="checkbox" name="books" value="travel"><label for="travel">여행</label></input>
+            <input type="checkbox" name="books" value="science><label for="science">과학</label></input>
+            <input type="checkbox" name="books" value="history"><label for="history">역사/문화</label></input>
+            <input type="checkbox" name="books" value="foreign"><label for="foreign">외국어</label></input>
+            <input type="checkbox" name="books" value="computer"><label for="computer">컴퓨터</label></input>
+            <input type="checkbox" name="books" value="cartoon"><label for="cartoon">만화</label></input>
+        </fieldset>
+        <button onclick="selectCategory();">카테고리 선택</button>
+        <script>
+
+        </script>
+
+    </form>
+    <div></div>
+</body>
+</html>

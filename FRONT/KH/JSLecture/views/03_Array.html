@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03_Array</title>
+    <style>
+        .method{
+            /* display: flex;s */
+            justify-content: center;
+            justify-items: auto;
+            align-items: center;
+            width:300px; height: 150px;
+            background-color: rgba(235, 235, 235, 0.192);
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html">인덱스로 돌아가기</a>
+    <h1>배열</h1>
+    <p>
+        자바스크립트에서는 자료형 지정이 없기 때문에<br>
+        <b>한 배열 안에 모든 자료형을 보관</b>할 수 있다.
+    </p>
+    <button onclick="arrayTest1();">확인하기</button>
+    <script>
+        function arrayTest1(){
+            // 자료형[] 배열명 = new 자료형[크기]; //공간 할당
+            // 배열명[인덱스] = 값;
+            // 자료형[] 배열명 = {값, 값, ...};
+            const arr = ['강건강', 20, false, [1,2,3,4]];
+            console.log(arr);
+        }
+    </script>
+    <br><br><hr>
+
+    <h2>1️⃣ 배열 선언 및 초기화</h2>
+    <p>배열 선언 시 크기를 지정하지 않고 선언할 수도 있고<br> 크기를 정하고 선언할 수도 있다.</p>
+    <button onclick="arrayTest2();">확인하기</button>
+    <script>
+        function arrayTest2(){
+            // 자료형[] 배열명 = new 자료형[크기]; // 공간 할당
+            // 배열명[인덱스] = 값;
+            const arr1 = new Array();
+            const arr2 = new Array(3);
+            console.log(arr1);
+            console.log(arr2);
+
+            arr1[0] = '귤';
+            arr1[1] = '감';
+            arr1[2] = '콩';
+            console.log(arr1);
+            arr1[3] = '물';
+            console.log(arr1);
+            
+            arr2[0] = '기차';
+            arr2[1] = '지하철';
+            arr2[2] = '버스';
+            console.log(arr2);
+            arr2[3] = '비행기';
+            console.log(arr2);
+            // 자료형[] 배열명 = {값, 값, ...};
+
+            const arr3 = ['java', 'oracle', 'jdbc', 'html', 'css', 'javascript'];
+            console.log(arr3);
+            
+            const arr4 = new Array('red', 'yellow', 'green', 'blue', 'black');
+            console.log(arr4);
+        }
+    </script>
+    <br><br>
+    <hr>
+
+    <h2>2️⃣ 배열 객체 메소드</h2>
+    <p>array도 하나의 객체이기 때문에 배열에서 활용할 수 있는 메소드가 있음</p>
+   
+    <div class="method">
+        <h3>[1] indexOf()</h3>
+        <p>배열에서 요소가 위치한 인덱스 리턴</p>
+        <button onclick="methodTest1();">확인하기</button>
+        <script>
+        function methodTest1(){
+            const arr=['사과', '딸기', '귤', '메론', '키위', '파인애플', '감', '배'];
+            console.log(arr.indexOf('메론')); //3
+            console.log(arr.indexOf('바나나')); //-1
+        }
+        </script>
+    </div>
+
+    <div class="method">
+        <h3>[2] concat()</h3>
+        <p>여러 개의 배열 결합</p>
+        <button onclick="methodTest2()">확인하기</button>
+        <script>
+            function methodTest2(){
+                const arr1 = ['red', 'green', 'yellow'];
+                const arr2 = ['blue', 'black', 'beige', 'brown'];
+
+                const arr3 = arr1.concat(arr2);
+                const arr4 = arr2.concat(arr1);
+
+                console.log(arr3);
+                console.log(arr4);
+
+                const arr5 = arr1.concat(arr1).concat(arr1).concat(arr2);
+                console.log(arr5);
+            }
+        </script>
+    </div>
+
+    <div class="method">
+        <h3>[3] join()</h3>
+        <p>배열을 결합하여 문자열로 반환</p>
+        <button onclick="methodTest3();">확인하기</button>
+        <script>
+        function methodTest3(){
+            const arr = ['강남', '역삼', '선릉', '교대'];
+            const arrJoin = arr.join();
+            console.log(arrJoin);
+            console.log(typeof arrJoin);
+        }
+        </script>
+    </div>
+
+    <div class="method">
+
+        <h3>[4] reverse()</h3>
+        <p>배열 순서를 뒤집음</p>
+        <button onclick="methodTest4();">확인하기</button>
+        <script>
+            function methodTest4(){
+                const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+                console.log(arr);
+            console.log(arr.reverse());
+        }
+        </script>
+    </div>
+
+    <div class="method">
+        <h3>[5] sort()</h3>
+        <p>배열 정렬</p>
+    <button onclick="methodTest5()">확인하기</button>
+    <script>
+        function methodTest5(){
+            const arr = [10, 543, 34, 450, 123, 888];
+            console.log(arr);
+            console.log(arr.sort());
+            
+            const sortArr = arr.sort(function(left, right){
+                return left-right;
+            });
+            console.log(sortArr);
+        }
+        </script>
+    </div>
+
+    <div class="method">
+        
+        <h3>[6] push()/pop()</h3>
+        <p>push() : 배열의 맨 뒤에 요소 추가 / pop() : 배열 맨 뒤에 있는 요소를 리턴하면서 제거</p>
+        <button onclick="methodTest6();">확인하기</button>
+        <script>
+            function methodTest6(){
+                const arr = ['블랙핑크', '뉴진스', '아이브', '아이유', '방탄소년단'];
+                console.log(arr);
+            arr.push('있지');
+            console.log(arr);
+            arr.push('10cm');
+            console.log(arr);
+
+            console.log(arr.pop());
+            console.log(arr);
+            console.log(arr.pop());
+            console.log(arr);
+            
+        }
+        </script>
+    </div>
+
+    <div class="method">
+        
+        <h3>[7] shift()/unshift()</h3>
+        <p>shift() : 배열의 맨 앞의 요소를 리턴하며 제거 / unshift() : 배열의 맨 앞에 요소 추가 </p>
+        <button onclick="methodTest7();">확인하기</button>
+        <script>
+            function methodTest7(){
+            const arr = ['한소희', '강동원', '손석구', '전지현','서강준'];
+            console.log(arr);
+            console.log(arr.shift());
+            console.log(arr);
+            console.log(arr.shift());
+            console.log(arr);
+
+            arr.unshift('황정민');
+            console.log(arr);
+            arr.unshift('이정재');
+            console.log(arr);
+        }
+    </script>
+    </div>
+
+    <div class="method">
+        
+        <h3>[8] slide()/splice()</h3>
+        <p>sclie() : 배열의 요소 뽑아내기 / splice() : 배열의 index 위치의 요소 제거 및 추가 </p>
+        <button onclick="methodTest8();">확인하기</button>
+        <script>
+        function methodTest8(){
+            const arr = ['자바', 'db', 'html', 'css', 'javascript'];
+            console.log(arr.slice(2,4)); //마지막에 있는 것은 포함하지 않는다.
+            // start <= index < end
+
+            console.log(arr.splice(2, 2, 'Spring'));
+            console.log(arr);
+        }
+        </script>
+    </div>
+
+    <div class="method">
+
+        <h3>[9] toString()</h3>
+        <p>배열을 문자열로 반환</p>
+        <button onclick="methodTest9()">확인하기</button>
+        <script>
+        function methodTest9(){
+            const arr = ['나는', '지금', '배가', '고파서', '뭘', '먹을지', '고민', '중이다'];
+
+            const str = arr.toString();
+            console.log(str);
+
+            const joinStr1 = arr.join();
+            console.log(joinStr1);
+            const joinStr2 = arr.join('/');
+                // join 은 매개변수로 배열의 인자 사이를 연결해줄 문자를 선택해 줄 수 있다.
+            console.log(joinStr2);
+
+        }
+    </script>
+    </div>
+
+    <div>
+        <h2>보너스</h2>
+        <h3>... 연산자</h3>
+        <p></p>
+        <button onclick="arrListOp();">나열연산자</button>
+        <script>
+            const arrListOp = () => {
+                const arr1 = [1, 2, 3, 4];
+                const arr2 = [5, 6, 7, 8];
+
+                let combine = arr1.concat(arr2);
+                console.log(combine);
+                combine = [...arr2, ...arr1];
+                console.log(combine);
+
+                let first = combine[0];
+                let second = combine[1];
+                let third = combine[2];
+
+                console.log(first, second, third);
+//                let[f, s, t] = combine;
+                let[f, s, t, ...other] = combine; //구조 분해 할당
+                console.log(f);
+                console.log(s);
+                console.log(t);
+                console.log(other);
+
+//                let test = ...arr1; //배열의 내부에 써야하는데, 밖에 쓰는 것은 불가능
+            }
+        </script>
+    </div>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+
+    
+</body>
+</html>

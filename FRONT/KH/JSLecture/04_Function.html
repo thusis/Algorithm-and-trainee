@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>04_Function</title>
+    <style>
+        div{
+            border: 1px solid black;
+            width:70vw; 
+            padding: 20px;
+            margin:20px;
+            align-items: center;
+            justify-content: center;
+        }
+        mark {
+            background-color: seashell 
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html">인덱스로 돌아가기</a>
+    <h1>함수</h1>
+    <h2>1️⃣함수 선언</h2>
+
+    <h3>[1] 선언적 함수</h3>
+    <p>함수 명을 작성하여 사용하는 방법</p>
+    <button onclick="declare();">실행확인</button>
+    <script>
+    // function declare(){
+    //     console.log('선언적 함수 실행');
+    // }
+    
+    // es6 : 화살표 함수
+        const declare = () => {
+            console.log('선언적 함수 실행');
+        }
+
+    </script>
+
+    <h3>[2] 익명 함수</h3>
+    <p>함수 명을 작성하지 않고 변수에 대입하는 방법</p>
+    <button onclick="anonymity()">실행확인</button>
+    <script>
+    // var anonymity = function(){
+    //     console.log('익명 함수 실행');
+    // }
+    const anonymity = () => {
+        console.log('익명 함수 실행');
+    }
+    </script>
+    
+    <h2>2️⃣ 함수 전달 인자와 매개변수</h2>
+
+    <div>
+        <h3>[1] 매개인자로 전달하기</h3>
+        <mark><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/Spread_syntax"> mdn 전개구문 </a></mark><br><br>
+        <button onclick="checkArgument();">실행 확인</button>
+        <script>
+            // function checkArgument(){
+            //     test('안녕');
+            //     test('반가워', '잘 지내보자');
+            //     test();
+            // }
+
+            // function test(value){
+            //     console.log(value);
+            //     console.log(arguments);
+            // }
+
+            const checkArgument = () => {
+                test('안녕');
+                test('반가워', '잘 지내보자');
+                test();
+            }
+
+            const test = (value, ...others) => {
+                console.log(value);
+                console.log(others);
+            }
+        </script>
+    </div>
+
+    <div>
+        <h3>[2] 매개변수로 스스로를 전달하기</h3>
+        <p>this</p>
+        <mark><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/this">mdn:this</a></mark><br><br>
+        <button onclick="sendOther('JavaScript');">JavaScript</button>
+        <button onclick="sendOther('jQuery');">jQuery</button>
+        <script>
+            const sendOther = (subject) => {
+                //자바스크립트 누르면 알림창으로 오늘 배울 내용은 '자바스크립트', 제이쿼리 누르면 오늘 배울 내용은 '제이쿼리'입니다.
+                alert('오늘 배울 내용은' + subject + '입니다.');
+
+            }
+        </script>
+
+        <button onclick="sendMe(this);">JavaScript2</button>
+        <button onclick="sendMe(this);">jQuery2</button>
+        <script>
+            const sendMe = (subject) => {
+                console.log(subject);
+                alert('오늘 배울 내용은'+subject.innerText+'입니다');
+            }
+        </script>
+    </div>
+
+    <div>
+        <h3>[3] 함수의 리턴처리</h3>
+        <mark><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/return">mdn : return</a></mark><br><br>
+        <button onclick="returnValue();">실행확인</button>
+        <script>
+            const returnValue = () => {
+                console.log(returnFunction());
+            }
+
+            // const returnFunction = () => {
+            //     return Math.floor(Math.random() * 100) + 1;
+            // }
+
+            const returnFunction = () => Math.floor(Math.random() * 100) + 1;
+            //함수 안에 들어가는 값이 단순히 return 뿐이라면 위와 같이 작성해도 된다.
+        </script>
+    </div>
+
+    <h2>3️⃣ 내장함수</h2>
+
+    <div>
+        <h3>[1] eval()</h3>
+        <mark><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/eval">mdn : eval()</a></mark><br><br>
+        <p>문자열을 자바스크립트 코드로 변환해 실행</p>
+        계산식 : <input type="text" id="test1">
+        <button onclick="evalTest1();">실행확인</button><br>
+        <hr>
+        숫자 1 : <input type="text" id="num1"><br>
+        숫자 2 : <input type="text" id="num2">
+        <button onclick="evalTest2();">실행확인</button><br>
+        <script>
+            const evalTest1 = () => {
+                const val = document.getElementById('test1').value;
+                console.log(val);
+                console.log(eval(val));
+            }
+
+            const evalTest2 = () => {
+                let evalTest = '' ;
+
+                evalTest += 'let num1 = parseInt(document.getElementById("num1").value);';
+                evalTest += 'let num2 = parseInt(document.getElementById("num2").value);';
+                evalTest += 'let sum = 0;';
+                evalTest += 'sum = num1 + num2;';
+                evalTest += 'alert(sum);';
+
+                eval(evalTest);
+            }
+    </script>
+    </div>
+
+    <div>
+        <h3>[2] infinity와 NaN</h3>
+        <p>
+            대부분의 프로그래밍 언어는 0으로 나누면 자동으로 오류가 발생하면서 프로그램이 종료되지만,<br>
+            자바스크립트는 0으로 숫자를 나누면 infinity라는 값이 들어가게 됨<br>
+            또한 자바스크립트가 표현할 수 없는 숫자는 NaN(Not a Number)로 표기
+        </p>
+        <button onclick="aboutNumFunc();">실행확인</button>
+        <script>
+            const aboutNumFunc = () => {
+                const num1 = 10/0;
+                const num2 = 10/ 'a';
+
+                console.log(num1); // Infinity
+                console.log(typeof num1); //number
+                console.log(num2); // NaN
+                console.log(typeof num2); //number
+
+                const num3 = -10/0 ; 
+                console.log(num3); //-Infinity
+                console.log(typeof num3); //number
+                
+                console.log(isFinite(num1)); //false
+                console.log(Infinity == num3); //false
+                console.log(-Infinity == num3); //true
+
+                console.log(isNaN(num2)); //true
+            }
+        </script>
+    </div>
+
+
+    
+</body>
+</html>
