@@ -24,6 +24,15 @@
             <label for="selectAll">전체선택</label>
             <script>
                 function selectAll(){
+                    // 1. 전체선택 체크 박스 클릭시 다른 모든 체크박스 클릭하는 효과
+                    //      전체선택 체크 박스의 정보 불러오기
+                    // 1)    위 박스.checked == true => 이면 
+                    //      다른 모든 체크박스.checked = true 로 바꾸기
+                    // 2)    박스.checked== flase => 다른박스들.checked = false
+
+                    // 2. 전체선택 체크박스 클릭된 상태 && 다른 체크박스를 해제하면 => 모두 해제
+
+
                     var selectAllBox = document.getElementById('SA');
                     var selectAllBooks = document.getElementsByName('books');
                     console.log(selectAllBox.value);
@@ -34,6 +43,14 @@
                     } else {
                         for(var i = 0; i<selectAllBooks.length;i++){
                             selectAllBooks[i].checked=false;
+                        }
+                    }
+
+                    for(var i=0; i<selectAllBooks.length; i++){
+                        if(selectAllBox.checked==true && selectAllBooks[i].checked==false){
+                            for(var j=0; j<selectAllBooks.length; i++){
+                                selectAllBooks[i].checked=false;
+                            }
                         }
                     }
 //                console.log(selectAll_box);
