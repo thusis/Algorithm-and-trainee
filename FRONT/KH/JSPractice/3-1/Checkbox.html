@@ -15,7 +15,7 @@
 </head>
 <body>
     <h1>Practice</h1>
-    <form action="">
+    <form>
         <fieldset>
             <legend>취미</legend>
 
@@ -67,6 +67,7 @@
         <button onclick="selectCategory();">카테고리 선택</button>
         </form>
         <div id="fill"></div>
+        
         <script>
             var one = document.getElementById('sa');
             var whole = document.getElementsByClassName('checkboxes');
@@ -103,12 +104,13 @@
             function selectCategory(){
                 var fill = document.getElementById('fill');
                 console.log(fill);
-                console.log(whole[2].value);
+                var text = 0;
                 for(var i=0; i<whole.length; i++){
-                    if(whole[i].checked === true){
-                        fill.innerHTML = whole[i].value+" ";
+                    if(whole[i].checked == true){
+                        text += whole[i].value+" ";
                     }
                 }
+                fill.innerHTML += text;
             }
         </script>
 
