@@ -20,23 +20,53 @@
             <legend>취미</legend>
 
 
-            <input type="checkbox" name="books" value="selectAll" id="sa" onclick="selectAll();" ><label for="selectAll">전체선택</label>
-            <input type="checkbox" class="checkboxes" name="books" value="common" onclick="deselectwhole()"><label for="common">종합</label>
-            <input type="checkbox" class="checkboxes" name="books" value="novel" onclick="deselectwhole()"><label for="novel">소설</label>
-            <input type="checkbox" class="checkboxes" name="books" value="poet" onclick="deselectwhole()"><label for="poet">시/에세이</label>
-            <input type="checkbox" class="checkboxes" name="books" value="economy" onclick="deselectwhole()"><label for="economy">경제/경영</label>
-            <input type="checkbox" class="checkboxes" name="books" value="selfDevelop" onclick="deselectwhole()"><label for="selfDevelop">자기계발</label>
-            <input type="checkbox" class="checkboxes" name="books" value="child" onclick="deselectwhole()"><label for="child">아동</label><br>
-            <input type="checkbox" class="checkboxes" name="books" value="travel" onclick="deselectwhole()"><label for="travel">여행</label>
-            <input type="checkbox" class="checkboxes" name="books" value="science" onclick="deselectwhole()"><label for="science">과학</label>
-            <input type="checkbox" class="checkboxes" name="books" value="history" onclick="deselectwhole()"><label for="history">역사/문화</label>
-            <input type="checkbox" class="checkboxes" name="books" value="foreign" onclick="deselectwhole()"><label for="foreign">외국어</label>
-            <input type="checkbox" class="checkboxes" name="books" value="computer" onclick="deselectwhole()"><label for="computer">컴퓨터</label>
-            <input type="checkbox" class="checkboxes" name="books" value="cartoon" onclick="deselectwhole()"><label for="cartoon">만화</label>
+            <input type="checkbox" id="sa" name="books" 
+            value="selectAll"  onclick="selectAll();" >
+            <label for="selectAll">전체선택</label>
+
+            <input type="checkbox" class="checkboxes" name="books"
+             value="common" onclick="deselectwhole()">
+             <label for="common">종합</label>
+
+            <input type="checkbox" class="checkboxes" name="books"
+             value="novel" onclick="deselectwhole()">
+             <label for="novel">소설</label>
+
+            <input type="checkbox" class="checkboxes" name="books"
+             value="poet" onclick="deselectwhole()">
+             <label for="poet">시/에세이</label>
+
+            <input type="checkbox" class="checkboxes" name="books"
+             value="economy" onclick="deselectwhole()">
+             <label for="economy">경제/경영</label>
+            <input type="checkbox" class="checkboxes" name="books"
+             value="selfDevelop" onclick="deselectwhole()">
+             <label for="selfDevelop">자기계발</label>
+            <input type="checkbox" class="checkboxes" name="books"
+             value="child" onclick="deselectwhole()">
+             <label for="child">아동</label><br>
+            <input type="checkbox" class="checkboxes" name="books"
+             value="travel" onclick="deselectwhole()">
+             <label for="travel">여행</label>
+            <input type="checkbox" class="checkboxes" name="books"
+             value="science" onclick="deselectwhole()">
+             <label for="science">과학</label>
+            <input type="checkbox" class="checkboxes" name="books"
+             value="history" onclick="deselectwhole()">
+             <label for="history">역사/문화</label>
+            <input type="checkbox" class="checkboxes" name="books"
+             value="foreign" onclick="deselectwhole()">
+            <label for="foreign">외국어</label>
+            <input type="checkbox" class="checkboxes" name="books"
+             value="computer" onclick="deselectwhole()">
+             <label for="computer">컴퓨터</label>
+            <input type="checkbox" class="checkboxes" name="books"
+             value="cartoon" onclick="deselectwhole()">
+             <label for="cartoon">만화</label>
         </fieldset>
         <button onclick="selectCategory();">카테고리 선택</button>
         </form>
-        <div class="fill"></div>
+        <div id="fill"></div>
         <script>
             var one = document.getElementById('sa');
             var whole = document.getElementsByClassName('checkboxes');
@@ -63,35 +93,22 @@
 
             function deselectwhole(){
                 if(one.checked===true){
-                    for(var i=1; i<whole.length; i++){
+                    for(var i=0; i<whole.length; i++){
                         whole[i].checked = false;
                     }
                     one.checked=false;
                 }
-                if(one.checked===false){
-                    for(var i=1; i<whole.length; i++){
-                        if(whole[i].checked === true){
-                            one.checked=true;
-                        }
-                    }
-                }
-                // for(var i=0; i<whole.length;i++ ){
-                //     if(whole[i].checked===false){
-                //         break;
-                //     }
-                //     one.checked=true;
-                // }
             }
 
             function selectCategory(){
-                var fill = document.getElementsByClassName('fill');
+                var fill = document.getElementById('fill');
                 console.log(fill);
+                console.log(whole[2].value);
                 for(var i=0; i<whole.length; i++){
                     if(whole[i].checked === true){
-                        fill.innerHTML += whole[i].value;
+                        fill.innerHTML = whole[i].value+" ";
                     }
                 }
-
             }
         </script>
 
