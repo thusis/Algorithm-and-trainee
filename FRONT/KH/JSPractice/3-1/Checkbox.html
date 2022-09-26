@@ -20,62 +20,80 @@
             <legend>취미</legend>
 
 
-            <input type="checkbox" name="books" value="selectAll" onclick="selectAll();" id="SA";>
-            <label for="selectAll">전체선택</label>
-            <script>
-                function selectAll(){
-                    // 1. 전체선택 체크 박스 클릭시 다른 모든 체크박스 클릭하는 효과
-                    //      전체선택 체크 박스의 정보 불러오기
-                    // 1)    위 박스.checked == true => 이면 
-                    //      다른 모든 체크박스.checked = true 로 바꾸기
-                    // 2)    박스.checked== flase => 다른박스들.checked = false
-
-                    // 2. 전체선택 체크박스 클릭된 상태 && 다른 체크박스를 해제하면 => 모두 해제
-
-
-                    var selectAllBox = document.getElementById('SA');
-                    var selectAllBooks = document.getElementsByName('books');
-                    console.log(selectAllBox.value);
-                    if(selectAllBox.checked==true){
-                        for(var i = 0; i<selectAllBooks.length;i++){
-                            selectAllBooks[i].checked=true;
-                        }
-                    } else {
-                        for(var i = 0; i<selectAllBooks.length;i++){
-                            selectAllBooks[i].checked=false;
-                        }
-                    }
-
-                    for(var i=0; i<selectAllBooks.length; i++){
-                        if(selectAllBox.checked==true && selectAllBooks[i].checked==false){
-                            for(var j=0; j<selectAllBooks.length; i++){
-                                selectAllBooks[i].checked=false;
-                            }
-                        }
-                    }
-//                console.log(selectAll_box);
-//                    if(selectAll_box.values.)
-                }
-            </script>
-            <input type="checkbox" name="books" value="common"><label for="common">종합</label></input>
-            <input type="checkbox" name="books" value="novel"><label for="novel">소설</label></input>
-            <input type="checkbox" name="books" value="poet"><label for="poet">시/에세이</label></input>
-            <input type="checkbox" name="books" value="economy"><label for="economy">경제/경영</label></input>
-            <input type="checkbox" name="books" value="selfDevelop"><label for="selfDevelop">자기계발</label></input>
-            <input type="checkbox" name="books" value="child"><label for="child">아동</label></input><br>
-            <input type="checkbox" name="books" value="travel"><label for="travel">여행</label></input>
-            <input type="checkbox" name="books" value="science><label for="science">과학</label></input>
-            <input type="checkbox" name="books" value="history"><label for="history">역사/문화</label></input>
-            <input type="checkbox" name="books" value="foreign"><label for="foreign">외국어</label></input>
-            <input type="checkbox" name="books" value="computer"><label for="computer">컴퓨터</label></input>
-            <input type="checkbox" name="books" value="cartoon"><label for="cartoon">만화</label></input>
+            <input type="checkbox" name="books" value="selectAll" id="sa" onclick="selectAll();" ><label for="selectAll">전체선택</label>
+            <input type="checkbox" class="checkboxes" name="books" value="common" onclick="deselectwhole()"><label for="common">종합</label>
+            <input type="checkbox" class="checkboxes" name="books" value="novel" onclick="deselectwhole()"><label for="novel">소설</label>
+            <input type="checkbox" class="checkboxes" name="books" value="poet" onclick="deselectwhole()"><label for="poet">시/에세이</label>
+            <input type="checkbox" class="checkboxes" name="books" value="economy" onclick="deselectwhole()"><label for="economy">경제/경영</label>
+            <input type="checkbox" class="checkboxes" name="books" value="selfDevelop" onclick="deselectwhole()"><label for="selfDevelop">자기계발</label>
+            <input type="checkbox" class="checkboxes" name="books" value="child" onclick="deselectwhole()"><label for="child">아동</label><br>
+            <input type="checkbox" class="checkboxes" name="books" value="travel" onclick="deselectwhole()"><label for="travel">여행</label>
+            <input type="checkbox" class="checkboxes" name="books" value="science" onclick="deselectwhole()"><label for="science">과학</label>
+            <input type="checkbox" class="checkboxes" name="books" value="history" onclick="deselectwhole()"><label for="history">역사/문화</label>
+            <input type="checkbox" class="checkboxes" name="books" value="foreign" onclick="deselectwhole()"><label for="foreign">외국어</label>
+            <input type="checkbox" class="checkboxes" name="books" value="computer" onclick="deselectwhole()"><label for="computer">컴퓨터</label>
+            <input type="checkbox" class="checkboxes" name="books" value="cartoon" onclick="deselectwhole()"><label for="cartoon">만화</label>
         </fieldset>
         <button onclick="selectCategory();">카테고리 선택</button>
+        </form>
+        <div class="fill"></div>
         <script>
+            var one = document.getElementById('sa');
+            var whole = document.getElementsByClassName('checkboxes');
 
+            function selectAll(){
+                // 1. 전체선택 체크 박스 클릭시 다른 모든 체크박스 클릭하는 효과
+                //      전체선택 체크 박스의 정보 불러오기
+                // 1)    위 박스.checked == true => 이면 
+                //      다른 모든 체크박스.checked = true 로 바꾸기
+                // 2)    박스.checked== flase => 다른박스들.checked = false
+
+                // 2. 전체선택 체크박스 클릭된 상태 && 다른 체크박스를 해제하면 => 모두 해제
+                console.log(one.value);
+                if(one.checked===true){
+                    for(var i=0; i<whole.length; i++){
+                        whole[i].checked = true;
+                    }
+                } else {
+                    for(var i=0; i<whole.length; i++){
+                        whole[i].checked = false;
+                    }
+                }
+            }
+
+            function deselectwhole(){
+                if(one.checked===true){
+                    for(var i=1; i<whole.length; i++){
+                        whole[i].checked = false;
+                    }
+                    one.checked=false;
+                }
+                if(one.checked===false){
+                    for(var i=1; i<whole.length; i++){
+                        if(whole[i].checked === true){
+                            one.checked=true;
+                        }
+                    }
+                }
+                // for(var i=0; i<whole.length;i++ ){
+                //     if(whole[i].checked===false){
+                //         break;
+                //     }
+                //     one.checked=true;
+                // }
+            }
+
+            function selectCategory(){
+                var fill = document.getElementsByClassName('fill');
+                console.log(fill);
+                for(var i=0; i<whole.length; i++){
+                    if(whole[i].checked === true){
+                        fill.innerHTML += whole[i].value;
+                    }
+                }
+
+            }
         </script>
 
-    </form>
-    <div></div>
 </body>
 </html>
