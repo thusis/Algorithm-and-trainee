@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>문제2 : 배열의 내장함수</title>
+</head>
+<body>
+    <h1>문제2 : 배열의 내장함수</h1>
+    <pre> <pass>부분에 배열 내장함수를 이용하여 코드를 입력하고 다음과 같이 출력되게 하세요.
+
+    데이터
+    var arr = [200, 100, 300];
+    //pass
+    console.log(arr);
+    
+    출력
+    [200, 100, 10000, 300]
+    </pre>
+
+    <script>
+        var arr = [200, 100, 300];
+        console.log(arr);
+        arr.splice(2,0,10000);
+        console.log("위처럼 arr.splice(2,1,'10000')"+"라고 작성하면 결과값으로 [200, 100, 10000]이라고 나온당"+"원래 값을 보존하고 싶으면 두 번째 인자를 0으로 두어야 함!");
+        console.log(arr);
+    
+    </script>
+
+
+    
+</body>
+</html>
