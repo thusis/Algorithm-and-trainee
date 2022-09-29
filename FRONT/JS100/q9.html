@@ -33,11 +33,13 @@
         var minute = '34';
         var second = '27';
         
-        var result = year+concat(month);
+        var result = year.concat('/').concat(month).concat('/').concat(day).concat(' ').concat(hour).concat(':').concat(minute).concat(':').concat(second);
         
         console.log(result);
 </script>
-    <h3>답: 84</h3>
+    <h3>답: var result = year.concat('/').concat(month).concat('/').concat(day).concat(' ').concat(hour).concat(':').concat(minute).concat(':').concat(second);</h3>
+    <h3 style="color:blue";>모범답안 : var result = year.concat('/', month, '/', day, ' ', hour, ':', minute, ':', second);</h3>
+
 
 </body>
 </html>
