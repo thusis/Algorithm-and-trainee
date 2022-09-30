@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>12</title>
+</head>
+<body>
+    <h1>문제12 : 게임 캐릭터 클래스 만들기</h1>
+다음 소스코드에서 클래스를 작성하여 게임 캐릭터의 능력치와 '파이어볼'이 출력되게 만드시오.
+<b>주어진 소스 코드를 수정해선 안됩니다.</b>
+
+<pre>
+데이터
+<script>
+    const Wizard = class Wizard{
+        constructor(health, mana, armor){
+            this.health=health;
+            this.mana=mana;
+            this.armor=armor;
+        }
+        attack(){
+            console.log('파이어볼');
+        }
+    }
+</script>
+
+const x = new Wizard(545, 210, 10);
+console.log(x.health, x.mana, x.armor);
+x.attack();
+
+
+출력
+545 210 10
+파이어볼
+</pre>
+
+<script>
+
+</script>
+
+
+</body>
+</html>

@@ -21,14 +21,22 @@
         *********
     </pre>
     <script>
-        let jul = 0;
-        for(var i=1; i<=5; i++){
-            for(var j=1; j<=2*j-1; j++){
-               jul += '*';
+
+        for(let i=1; i<=5; i++){
+            const space = 5-i;
+            const star = 2*i-1;
+            document.write('<pre>')
+            for(let j=1; j<=space; j++){
+                document.write(' ');
             }
-            jul += '<br>';
-            console.log(jul);
+            for(let j=1; j<=star; j++){
+                document.write('*');
+            }
+            document.write('<br></pre>');
         }
+
+
+
     </script>
 
     
