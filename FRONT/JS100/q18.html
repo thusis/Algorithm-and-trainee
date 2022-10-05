@@ -16,6 +16,11 @@
         console.log(arr)
         
         let x=0;
+        for(let i in arr){
+            x+=parseInt(arr[i]);
+            console.log(x); 
+        }
+
         //단순 대입이 아니라 연산을 준비하고 있으니까 초기화로 숫자형식을 지정해주는 것이 현명하다. 초기화를 해두지 않으면 아래처럼 NaN 파티가 난다
         /*for(let i in arr){
             console.log(arr[i]); //20 30 40
