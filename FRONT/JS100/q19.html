@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h1>문제19 : 제곱을 구하자</h1>
+    공백으로 구분하여 두 숫자 a와 b가 주어지면, a의 b승을 구하는 프로그램을 작성하세요.
+    <script>
+        let q19=window.prompt("숫자 a와 b를 공백으로 구분하여 입력하시오: ").split(" ");
+        a=Number(q19[0]);
+        b=Number(q19[1]);
+        // Math.pow(n, m) // n의 m승의 값
+        result=Math.pow(Number(q19[0]),Number(q19[1]));
+        console.log(result);
+    </script>
+</body>
+</html>

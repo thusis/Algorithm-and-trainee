@@ -15,8 +15,9 @@
         let arr=window.prompt("세 과목의 점수를 입력하세요: ").split(" ");
         console.log(arr)
         
-        let x;
-        for(let i in arr){
+        let x=0;
+        //단순 대입이 아니라 연산을 준비하고 있으니까 초기화로 숫자형식을 지정해주는 것이 현명하다. 초기화를 해두지 않으면 아래처럼 NaN 파티가 난다
+        /*for(let i in arr){
             console.log(arr[i]); //20 30 40
             console.log(parseInt(arr[i])) //20 30 40
             console.log(typeof(parseInt(arr[i]))); //number number number
@@ -24,13 +25,19 @@
             
             x += parseInt(arr[i]); 
             
-            console.log(x); //NaN NaN NaN [질문] x안에 뭐 들어간거야?
+            console.log(x); //NaN NaN NaN [질문] x안에 뭐 들어간거야? 왜 기대한 값(20,50,90) 출력되지 않아? 기대한 값으로 바꾸려면? ==> typeof NaN === 'number'
             console.log("[",i,"번째]: ",x); //[0번째:]NaN [1번째:]NaN [2번째:]NaN
             console.log("["+i+"번째]: "+x); //[0번째:]NaN [1번째:]NaN [2번째:]NaN
             console.log(typeof(x))         //number number number
         }
         console.log(x); //NaN
-        console.log(x/3); //NaN
+        console.log(x/3); //NaN*/
+        for(let i in arr){
+            x+=parseInt(arr[i]);
+            console.log(x);
+        }
+        console.log(x);
+        console.log(x/3);
 
     </script>
 </body>
