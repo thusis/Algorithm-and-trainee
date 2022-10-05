@@ -7,15 +7,30 @@
 <body>
     <h1>문제18 : 평균 점수</h1>
     <script>
-        var string = prompt("점수를 입력하세요");
-        var n = string.split(" ");
-        var sum;
-        for(let i in n){
-            sum += n;
-            console.log(typeof(n));
-            console.log(sum);
-        }
+    /*  let arr = parseInt(window.prompt("세 과목의 점수를 입력하세요: ").split(' ')); //안 되네? 문자열 집합을 숫자로 변환하는 거여서 그런가
+        console.log(arr);
+        console.log(arr[0]);//undefined
+        console.log(typeof(arr[0])); //undefined */
 
+        let arr=window.prompt("세 과목의 점수를 입력하세요: ").split(" ");
+        console.log(arr)
+        
+        let x;
+        for(let i in arr){
+            console.log(arr[i]); //20 30 40
+            console.log(parseInt(arr[i])) //20 30 40
+            console.log(typeof(parseInt(arr[i]))); //number number number
+            console.log(typeof(x)) //undefined number number
+            
+            x += parseInt(arr[i]); 
+            
+            console.log(x); //NaN NaN NaN [질문] x안에 뭐 들어간거야?
+            console.log("[",i,"번째]: ",x); //[0번째:]NaN [1번째:]NaN [2번째:]NaN
+            console.log("["+i+"번째]: "+x); //[0번째:]NaN [1번째:]NaN [2번째:]NaN
+            console.log(typeof(x))         //number number number
+        }
+        console.log(x); //NaN
+        console.log(x/3); //NaN
 
     </script>
 </body>

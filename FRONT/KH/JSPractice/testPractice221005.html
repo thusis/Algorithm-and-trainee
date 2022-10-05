@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>UI/UX 콘셉트 기획 - 평가자체크리스트</title>
+    <style>
+        #print{
+            height : 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <fieldset>
+        <legend>출력창</legend>
+        <div id="print"></div>
+    </fieldset>
+    <button type="button" onclick="insertMember();">입력</button>
+    <button type="button" onclick="printMember();">출력</button>
+    
+    <script>
+        let Member;
+        insertMember=()=>{
+            let name = prompt("이름을 입력하세요 : ");
+            let age = prompt("나이를 입력하세요 : ");
+            let address = prompt("주소를 입력하세요 : ");
+        
+            Member={
+                name:name,
+                age:age,
+                address:address,
+                info:()=>{
+                    str:"이름은 "+name+"이고, <br>나이는 "+age+"살이며, <br>사는 곳은 "+address+"임.";
+                    return str;
+                }
+            }
+            console.log(typeof(info))
+        };
+        printMember=()=>{
+            const div1 = document.getElementById("print");
+            if(Member!=undefined){
+                div1.innerHTML=Member.info;
+            }else{
+                alert("입력이 완료되지 않았습니다.");
+            }
+        }
+    </script>
+</body>
+</html>
