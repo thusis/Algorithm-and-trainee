@@ -2,7 +2,7 @@ package com.be.practice;
 
 import java.util.Scanner;
 
-public class P2920 {
+public class P2920 { //음계
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		String[] strArr = sc.nextLine().split(" ");
