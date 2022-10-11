@@ -59,10 +59,10 @@
             let nArr=prompt('여러 개의 숫자 입력').split('').reverse();
             console.log('거꾸로 : '+nArr);
             // console.log(nArr.reverse); //이거 안됨
-            console.log('원래 입력 값 : ' + nArr.reverse());
-            for(i in nArr){
-                console.log(nArr[i]);
-            }
+            // console.log('원래 입력 값 : ' + nArr.reverse());
+            // for(i in nArr){
+            //     console.log(nArr[i]);
+            // }
         }
     </script>
 
@@ -117,19 +117,21 @@
         console.log(b(10));
         console.log(c(10));
     </pre>
+
     <button onclick="q35();">문제35번</button><br>
     <script>
         q35=()=>{
             function one(n){
-                function two(){
-                    Math.pow(n, 2);//수정 중...
+                function two(value){
+                    const sq = Math.pow(value, n);//답지 베낌
+                    return sq;
                 }
                 return two;
             }
             
-            const a = one(2);
-            const b = one(3);
-            const c = one(4);
+            const a = one(2); //2제곱 수는 a
+            const b = one(3); //3제곱 수는 b
+            const c = one(4); //4제곱 수는 c
             
             console.log(a(10));
             console.log(b(10));
