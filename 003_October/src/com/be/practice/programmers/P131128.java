@@ -30,11 +30,14 @@ public class P131128 {
 		String result="";
 		if(chars.isEmpty()) {
 			result="-1";
-		}else {
+		} else {
 			Collections.sort(chars, Collections.reverseOrder());
 			for(int i=0; i<chars.size();i++) {
 				result+=chars.get(i);
-			}			
+			}
+			if(Integer.parseInt(result)==0) {
+				result="0";
+			}
 		}
 		System.out.println(result);
 	}	
