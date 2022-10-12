@@ -2,7 +2,7 @@ package com.be.practice;
 
 import java.util.Scanner;
 
-public class P1929 {
+public class P1929t1 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		String[] str = sc.nextLine().split(" ");
