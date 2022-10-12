@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>36~40번</title>
+</head>
+<body>
+    <h1>문제 36 : 구구단 출력하기</h1>
+    <pre>1~9까지의 숫자 중 하나를 입력하면 그 단의 구구단 결과를 한 줄에 출력하는 프로그램을 작성하세요.</pre>
+    <br><button onclick="q36();">36번</button>
+    <script>
+        q36 = () => {
+            const number = prompt('1~9 사이의 숫자 중 하나를 입력하세요.')
+            let result='';
+            for(let i=1; i<=9; i++){
+                result+=i*number+' ';
+            }
+            console.log(result);
+        }
+    </script>
+
+    <h1>문제37 : 반장 선거 </h1> // 다시
+    <pre>새 학기를 맞아 호준이네 반은 반장 선거를 하기로 했습니다.  그런데 표를 하나씩 개표하는 과정이 너무 번거롭게 느껴진 당신은 학생들이 뽑은 후보들을 입력받으면 뽑힌 학생의 이름과 받은 표 수를 출력하는 프로그램을 작성하기로 하였습니다.</pre>
+    <br><button onclick="q37();">37번</button>
+    <script>
+        q37 = () => {
+            const students = prompt('입력').split(' ');
+            console.log(students);
+            for(i in students){
+                console.log(students[i]);
+            }
+
+            let x = [];
+            for(i in students){
+                if(x.indexOf(students[i])=='-1'){
+                    x.push(students[i]);
+                } //중복없이 x에 반장 후보 이름 넣기
+            }
+            const captain={};
+            for(i in x){
+                console.log(x[i]);
+                count=0;
+                for(j in students){
+                    if(students.indexOf(x[i])!='-1'){
+                        ++count;
+                    }
+                }
+                captain[x[i]]=count;
+                console.log(captain[x[i]]);
+            }
+            console.log(captain);
+        }
+    </script>
+
+    <h1>문제38 : 호준이의 아르바이트</h1>
+    <pre>
+        호준이는 아르바이트로 영어 학원에서 단어 시험지를 채점하는 일을 하고 있다. 호준이가 일하는 학원은 매번 1위부터 3위까지의 학생에게 상으로 사탕을 준다. 그런데 오늘은 마침 사탕이 다 떨어져서 호준이가 채점을 하고 점수를 보내면, 당신이 아이들의 숫자만큼 사탕을 사러 가기로 했다.
+
+        1위 ~ 3위 학생은 여러명일 수 있고 1~3위 학생 중 중복되는 학생까지 포함하여 사탕을 사기로 한다.
+        학생들의 점수를 공백으로 구분하여 입력을 받고 사탕을 받을 학생의 수를 출력하세요.
+    </pre>
+    <br><button onclick="q38();">문제38</button><br>
+    <script>
+        q38=()=>{
+            const temp1 = prompt('학생들의 점수를 공백으로 구분하여 입력하시오').split(' ');
+            let temp2=[];
+            for(i in temp1){
+                temp2.push((Number)(temp1[i]));
+            }
+            arr = temp2.sort().reverse();
+            let candy=0;
+            let count=0;
+            for( i in arr){
+                candy++;
+                if(i>0){
+                    if(arr[i]!=arr[i-1]){
+                        count++;
+                        console.log(arr[i] + ": " + count +", "+ candy);
+                    }
+                }
+                
+            }
+
+
+
+        }
+
+    </script>
+</body>
+</html>
