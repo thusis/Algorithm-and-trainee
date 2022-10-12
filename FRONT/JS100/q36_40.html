@@ -172,7 +172,15 @@
     </pre>
     <br><button onclick="q42();">문제42</button><br>
     <script>
-
+        q42=()=>{
+            let yoil = ['MON', 'TUE', 'WED', 'THU', 'FRI','SAT','SUN'];
+            a = prompt('월');
+            b = prompt('일');
+            let day = new Date(2020, a-1, b);
+            //console.log(day);
+            //console.log(day.getDay());
+            console.log(yoil[day.getDay()-1]);
+        }
     </script>
 
     
