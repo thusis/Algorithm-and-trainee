@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h1>문제43 : 10진수를 2진수로</h1>
+    <pre>
+        우리가 흔히 사용하는 숫자 1, 8, 19, 28893 등등...은 10진수 체계입니다.
+        이를 컴퓨터가 알아 들을 수 있는 2진수로 바꾸려고 합니다. 어떻게 해야할까요?
+        
+        사용자에게 숫자를 입력받고 이를 2진수를 바꾸고 그 값을 출력해주세요.
+    </pre>
+    <br><button onclick="q43();">문제 43번</button><br>
+    <p>parseInt(string, radix) 를 사용한다 <a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/parseInt">mdn 참고</a></p>
+    <script>
+        q43=()=>{
+            const num = prompt("숫자 입력");
+            console.log(parseInt(num,2));
+        }
+    </script>
+    <h1>문제44 : 각 자리수의 합</h1>
+    <pre>
+        사용자가 입력한 양의 정수의 각 자리수의 합을 구하는 프로그램을 만들어주세요
+
+        예를들어
+        18234 = 1+8+2+3+4 이고 정답은 18 입니다.
+        3849 = 3+8+4+9 이고 정답은 24입니다.
+    </pre>
+    <br><button onclick="q44();">문제44</button><br>
+    <script>
+        q44=()=>{
+            let num = prompt('숫자 입력');
+            m=num.split('').length;
+            count = 0;
+
+            for(let i=0; i<m; i++){
+                count += num%10; //4..3..2..8..1
+                num -= num%10;
+                num = Math.floor(num/10); //1823..182..18..1
+            }
+            console.log(count);
+        }
+    </script>
+    
+    <h1>문제45 : getTime()함수 사용하기</h1>
+    <pre>
+        Date객체의 메소드 중 하나인 getTime()은 1970년 1월 1일 0시 0분 0초 이후로부터 지금까지 흐른 시간을 천분의 1초 단위(ms)로 반환합니다.
+
+        이를 이용하여 현재 연도(2019)를 출력해보세요.
+    </pre>
+    <br><button onclick="q45();">q45</button><br>
+    <p><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Date/getTime">mdn Date.prototype.getTime()</a></p>
+    <script>
+        q45=()=>{
+            const date = new Date();
+            console.log(date.getTime()); //1970 년 1 월 1 일 00:00:00 UTC와 주어진 날짜 사이의 경과 시간 (밀리 초)을 나타내는 숫자입니다.
+            console.log(date.getFullYear()); //년
+            console.log(date.getMonth())+1; //월
+            console.log(date.getDate()); //날짜
+            console.log(date.getDay()); //요일
+            console.log(date); // 오늘 날짜 출력
+
+// 현재 년도를 출력하려면 
+// 밀리초 -1000-> 초 -60-> 분 -60-> 시간 -24-> 하루 -365-> 연
+
+            console.log('----------')
+            let divisor = 1000*60*60*24*365
+            let years = (date.getTime())/divisor;
+            console.log(Math.floor(1970+years));
+        }
+    </script>
+
+    <h1>문제46 : 각 자리수의 합 2</h1>
+    <pre>
+        1부터 20까지의(20을 포함) 모든 숫자를 일렬로 놓고 모든 자릿수의 총 합을 구하세요. 
+
+        예를 들어 10부터 15까지의 모든 숫자를 일렬로 놓으면 101112131415이고 
+        각 자리의 숫자를 더하면 21입니다. (1+0+1+1+1+2+1+3+1+4+1+5 = 21)
+    </pre>
+    <br><button onclick="q46();">46번</button><br>
+    <script>
+        
+    </script>
+    
+</body>
+</html>
