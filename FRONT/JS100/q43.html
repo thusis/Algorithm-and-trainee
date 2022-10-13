@@ -81,8 +81,120 @@
     </pre>
     <br><button onclick="q46();">46번</button><br>
     <script>
-        
+        q46=()=>{
+            const str="1234567891011121314151617181920";
+            result=0;
+            for(let i=0; i<str.length; i++){
+                result += parseInt(str.split('')[i]);
+            }
+            console.log(result);
+        }
     </script>
+    <h1>문제47 : set 자료형의 응용</h1>//다시
+    <pre>
+        바울랩에서는 3월 29일 제주대학교에서 '제주 빅데이터 사회혁신 해커톤' 행사를 주최하게 되었습니다. 이에 구글 설문지를 배포하였으나 제주대학생들이 중복해서 n개씩 설문지를 제출하였습니다. 
+        중복된 데이터들을 삭제하여 실제 접수 명단이 몇 명인지 알고 싶습니다.
+
+        아래 주어진 데이터들로부터 중복을 제거하여 실제 접수 인원을 출력해 주세요.
+        const people = {
+            이호준: "01050442903",
+            이호상: "01051442904",
+            이준호: "01050342904",
+            이호준: "01050442903",
+            이준: "01050412904",
+            이호: "01050443904",
+            이호준: "01050442903"
+        };
+    </pre>
+    <br><button onclick="q47();">47번</button><br> 
+    <script>
+        q47=()=>{
+            const people = {
+                이호준: "01050442903",
+                이호상: "01051442904",
+                이준호: "01050342904",
+                이호준: "01050442903",
+                이준: "01050412904",
+                이호: "01050443904",
+                이호준: "01050442903"
+            };
+            
+
+        }
+    </script>
+
+<h1>문제48 : 대소문자 바꿔서 출력하</h1>
+<pre>문자열이 주어지면 대문자와 소문자를 바꿔서 출력하는 프로그램을 작성하세요.</pre>
+<br><button onclick="q48();">48번</button><br>
+<script>
+    q48=()=>{
+        str = prompt('입력');
+        let = result='';
+        for(let i=0; i<str.length; i++){
+            if(str.split('')[i] === str.split('')[i].toUpperCase()){
+                result += str.split('')[i].toLowerCase();
+            } else{
+                result += str.split('')[i].toUpperCase();
+            }
+        }
+        console.log(result);
+    }
+</script>
+<h1>문제49 : 최댓값 구하기</h1> //다시
+<pre>순서가 없는 10개의 숫자가 공백으로 구분되어 주어진다. 주어진 숫자들 중 최댓값을 반환하라.</pre>
+<br><button onclick="q49();">문제49</button><br>
+<script>
+    q49=()=>{
+        const input = prompt('10개의 숫자 입력').split(' ');
+        let temp=0;
+        let result=0;
+        console.log(input.sort);
+        for(i=0; i<10; i++){
+            for(j=0; j<10; j++){
+                if(input[i]<input[j]){
+                    temp=input[j];
+                }
+                input[i]
+                input[j]
+                temp
+            }
+        }
+        console.log(result);
+
+    }
+</script>
+<h1>문제50 : 버블정렬 구현하기</h1>
+<pre>
+    버블정렬은 두 인접한 원소를 검사하여 정렬하는 방법을 말합니다. 시간 복잡도는 느리지만 코드가 단순하기 때문에 자주 사용됩니다.
+    아래 코드의 빈칸을 채워주세요.
+</pre>
+<img src="https://img.scoop.it/omRChIeVtQY1Nodjul8eODl72eJkfbmt4t8yenImKBVvK0kTmF0xjctABnaLJIm9">
+<pre>
+    function bubble(arr) {
+        let result = arr.slice(); 
+      
+        for (let i = 0; i < result.length - 1; i++) {
+          for (/*빈칸을 채워주세요.*/) {
+            if (result[j] > result[j + 1]) {
+               //빈칸을 채워주세요.
+            }
+          }
+        }
+        return result;
+      }
+      
+      const items = prompt('입력해주세요.').split(' ').map((n) => {
+        return parseInt(n, 10);
+      });
+      
+      console.log(bubble(items));
+</pre>
+<br><button onclick="q50();">q50</button><br>
+<script>
+    q50=()=>{
+
+    }
+</script>
     
 </body>
 </html>

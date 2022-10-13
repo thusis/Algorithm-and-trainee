@@ -13,7 +13,7 @@ public class P131128 {
 		
 		ArrayList<Character> chars = new ArrayList<>();//결과 담을
 		ArrayList<Character> yArr = new ArrayList<>();//y의 각 문자 담을
-		for(int i=0; i<Y.split("").length; i++) {
+		for(int i=0; i<Y.length(); i++) {
 			yArr.add(Y.split("")[i].charAt(0));
 		}
 		
@@ -21,7 +21,7 @@ public class P131128 {
 			for(int j=0; j<yArr.size(); j++) {
 				if(X.charAt(i)==yArr.get(j)) {
 					chars.add(X.charAt(i));
-					yArr.remove(j);
+					yArr.remove(j);//
 					break;
 				}			
 			}
