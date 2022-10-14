@@ -20,6 +20,8 @@
             console.log(parseInt(num,2));
         }
     </script>
+
+
     <h1>문제44 : 각 자리수의 합</h1>
     <pre>
         사용자가 입력한 양의 정수의 각 자리수의 합을 구하는 프로그램을 만들어주세요
@@ -90,7 +92,7 @@
             console.log(result);
         }
     </script>
-    <h1>문제47 : set 자료형의 응용</h1>//다시
+    <h1>문제47 : set 자료형의 응용</h1>
     <pre>
         바울랩에서는 3월 29일 제주대학교에서 '제주 빅데이터 사회혁신 해커톤' 행사를 주최하게 되었습니다. 이에 구글 설문지를 배포하였으나 제주대학생들이 중복해서 n개씩 설문지를 제출하였습니다. 
         중복된 데이터들을 삭제하여 실제 접수 명단이 몇 명인지 알고 싶습니다.
@@ -118,9 +120,17 @@
                 이호: "01050443904",
                 이호준: "01050442903"
             };
-            
+            keys = Object.keys(people);
+            console.log(keys)
+            let mySet = new Set();
+            for(let i=0; i<keys.length; i++){
+                mySet.add(keys[i]+':'+people[keys[i]]);
+            }
+            console.log(mySet.size)
 
         }
+
+        
     </script>
 
 <h1>문제48 : 대소문자 바꿔서 출력하</h1>
@@ -140,27 +150,25 @@
         console.log(result);
     }
 </script>
-<h1>문제49 : 최댓값 구하기</h1> //다시
+
+<h1>문제49 : 최댓값 구하기</h1> 
 <pre>순서가 없는 10개의 숫자가 공백으로 구분되어 주어진다. 주어진 숫자들 중 최댓값을 반환하라.</pre>
+ex. 1 20 339 5 24 3 50 4 9 10
 <br><button onclick="q49();">문제49</button><br>
 <script>
     q49=()=>{
-        const input = prompt('10개의 숫자 입력').split(' ');
+        const input = prompt('10개의 숫자 입력').split(' ').map((n)=>{return parseInt(n,10)});
         let temp=0;
-        let result=0;
-        console.log(input.sort);
-        for(i=0; i<10; i++){
-            for(j=0; j<10; j++){
-                if(input[i]<input[j]){
+        for(i=0; i<9; i++){
+            for(j=0; j<10; j++){ //큰 수부터 정렬하기
+                if(input[j]<input[j+1]){
                     temp=input[j];
+                    input[j]=input[j+1];
+                    input[j+1]=temp;
                 }
-                input[i]
-                input[j]
-                temp
             }
         }
-        console.log(result);
-
+        console.log(input[0]);
     }
 </script>
 <h1>문제50 : 버블정렬 구현하기</h1>
@@ -190,10 +198,35 @@
       console.log(bubble(items));
 </pre>
 <br><button onclick="q50();">q50</button><br>
+앞뒤 비교해서 정렬하는 것을 <mark>버블정렬</mark>이라 하는구나~
 <script>
     q50=()=>{
+        function bubble(arr) {
+        let result = arr.slice(); 
+        
+        for (let i = 0; i < result.length - 1; i++) {
+            for (let j=0 ; j<result.length;j++) {
+                if (result[j] > result[j + 1]) {
+                    let temp = result[j]
+                    result[j] = result[j+1]
+                    result[j+1] =  temp
+                }
+            }
+        }
+        return result;
+        }
+        
+        const items = prompt('입력해주세요.').split(' ').map((n) => {
+        return parseInt(n, 10);
+        });
+        
+        console.log(bubble(items));
 
     }
+
+
+
+    
 </script>
     
 </body>
