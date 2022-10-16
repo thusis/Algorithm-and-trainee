@@ -24,5 +24,4 @@ public class P2750 {
 			System.out.println(arr[i]);
 		}
 	}
-
 }
