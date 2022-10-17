@@ -12,8 +12,7 @@ public class P2581 {
 		
 		for(int i=m; i<=n; i++) {
 			list.add(i);
-		}
-		for(int i=m; i<=n; i++) {
+		}		for(int i=m; i<=n; i++) {
 			for(int j=2; j<Math.sqrt(i); j++) {
 				if(i%j==0) {
 					list.remove(i);
