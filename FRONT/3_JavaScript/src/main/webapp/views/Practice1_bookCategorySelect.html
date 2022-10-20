@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>책 카테고리 선택</title>
+    <style>
+        form{
+            width:66%;
+        }
+        div{
+            border: 1px solid red;
+            width:66%; height:180px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Practice</h1>
+    <form>
+        <fieldset>
+            <legend>취미</legend>
+
+
+            <input type="checkbox" id="sa" name="books" 
+            value="전체선택"  onclick="selectAll();" >
+            <label for="전체선택">전체선택</label>
+
+            <input type="checkbox" class="checkboxes" name="books"
+             value="종합" onclick="deselectwhole()">
+             <label for="종합">종합</label>
+
+            <input type="checkbox" class="checkboxes" name="books"
+             value="소설" onclick="deselectwhole()">
+             <label for="소설">소설</label>
+
+            <input type="checkbox" class="checkboxes" name="books"
+             value="시/에세이" onclick="deselectwhole()">
+             <label for="시/에세이">시/에세이</label>
+
+            <input type="checkbox" class="checkboxes" name="books"
+             value="경제/경영" onclick="deselectwhole()">
+             <label for="경제/경영">경제/경영</label>
+
+            <input type="checkbox" class="checkboxes" name="books"
+             value="자기계발" onclick="deselectwhole()">
+             <label for="자기계발">자기계발</label>
+            <input type="checkbox" class="checkboxes" name="books"
+             value="아동" onclick="deselectwhole()">
+             <label for="아동">아동</label><br>
+            <input type="checkbox" class="checkboxes" name="books"
+             value="여행" onclick="deselectwhole()">
+             <label for="여행">여행</label>
+            <input type="checkbox" class="checkboxes" name="books"
+             value="과학" onclick="deselectwhole()">
+             <label for="과학">과학</label>
+            <input type="checkbox" class="checkboxes" name="books"
+             value="역사/문화" onclick="deselectwhole()">
+             <label for="역사/문화">역사/문화</label>
+            <input type="checkbox" class="checkboxes" name="books"
+             value="외국어" onclick="deselectwhole()">
+            <label for="외국어">외국어</label>
+            <input type="checkbox" class="checkboxes" name="books"
+             value="컴퓨터" onclick="deselectwhole()">
+             <label for="컴퓨터">컴퓨터</label>
+            <input type="checkbox" class="checkboxes" name="books"
+             value="만화" onclick="deselectwhole()">
+             <label for="만화">만화</label>
+        </fieldset>
+        <button type="button" onclick="selectCategory();">카테고리 선택</button>
+        </form>
+        <div id="fill"></div>
+        
+        <script>
+            var one = document.getElementById('sa');
+            var whole = document.getElementsByClassName('checkboxes');
+
+            function selectAll(){
+                // 1. 전체선택 체크 박스 클릭시 다른 모든 체크박스 클릭하는 효과
+                //      전체선택 체크 박스의 정보 불러오기
+                // 1)    위 박스.checked == true => 이면 
+                //      다른 모든 체크박스.checked = true 로 바꾸기
+                // 2)    박스.checked== flase => 다른박스들.checked = false
+
+                // 2. 전체선택 체크박스 클릭된 상태 && 다른 체크박스를 해제하면 => 모두 해제
+                console.log(one.value);
+                if(one.checked===true){
+                    for(var i=0; i<whole.length; i++){
+                        whole[i].checked = true;
+                    }
+                } else {
+                    for(var i=0; i<whole.length; i++){
+                        whole[i].checked = false;
+                    }
+                }
+            }
+
+            function deselectwhole(){
+                if(one.checked===true){
+                    for(var i=0; i<whole.length; i++){
+                        whole[i].checked = false;
+                    }
+                    one.checked=false;
+                }
+            }
+
+            selectCategory = () => {
+                const books = document.getElementsByName('books');
+                console.log(books);
+                var checkbook='';
+                for(var i = 0; i<books.length; i++){
+                    if(books[i].checked==true){
+                        console.log(books[i].value);
+                        checkbook += books[i].value + " ";
+                    }
+                }
+                document.getElementById('fill').innerHTML = checkbook;
+
+            }
+        </script>
+
+</body>
+</html>

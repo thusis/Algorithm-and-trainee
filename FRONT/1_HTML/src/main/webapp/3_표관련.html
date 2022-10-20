@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>표를 만들어보장</title>
+
+<style>
+	tbody{background: lightgrey;}
+</style>
+
+</head>
+<body>
+	<h1> 기본적인 표 만들기 </h1>
+	<table border = "1"> 
+		<caption><b>웹 브라우저 종류</b></caption>
+		<!-- 코드 아래에 작성해도 아래로 위치 변경되지 않는다. 캡션위치 변경은 css 에서 가능 -->
+		<tr>
+			<th>브라우저명</th>
+			<th>제조사</th>
+			<th>홈페이지</th>
+		</tr>
+		<tr>
+			<td>익스플로러</td>
+			<td>MS</td>
+			<td>https://www.microsoft.com</td>
+		</tr>
+		<tr>
+			<td>크롬</td>
+			<td>google</td>
+			<td>https://www.google.com</td>
+		</tr>
+		<tr>
+			<td>사파리</td>
+			<td>애플</td>
+			<td>https://www.apple.com</td>
+		</tr>
+		<tr>
+			<td>웨일</td>
+			<td>네이버</td>
+			<td>https://www.naver.com</td>
+		</tr>
+	</table>
+
+	<figure>
+		<figcaption> figure를 이용해서 테이블 혹은 이미지 설명에 주로 사용 </figcaption>
+		<figcaption> 설명 내용을 여러 줄로 표기 가능 </figcaption>
+	</figure>
+	<hr><br>
+	<h1>HTML 테이블 만들기 예제 10</h1>
+	<table border="1">
+		<caption>재고 관리</caption>
+		<tr bgcolor="lightgray">
+			<th>번호</th>
+			<th>브랜드</th>
+			<th>모델</th>
+			<th>위치</th>
+			<th>기타</th>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>ATEM</td>
+			<td>CS1308</td>
+			<td>B5전산실</td>
+			<td>KVM</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>naV33</td>
+			<td>NV18-PPT200</td>
+			<td>B1 방재실</td>
+			<td>빔포인터</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>CAPS</td>
+			<td>지문인식</td>
+			<td>4F비즈니스센터</td>
+			<td>출퇴근</td>
+		</tr>
+	</table>
+
+	<br><br><hr><br>
+	<h3> 셀 합치기 병합 연습 </h3>
+	<b>무작정 병합이 들어간 표를 만들지 말고,<br> 가장 기본이 되는 모습을 먼저 만들어라</b><br>
+	<ul>
+		<li>colspan : 열병합, 가로로 길게 &nbsp; ▃ </li>
+		<li>rowspan : 행병합, 세로로 길게 ▐</li>
+	</ul>
+	<table border = "1">
+		<tr>
+			<th colspan="3"> 공연요금 </th>
+		</tr>
+		<tr>
+			<th> 구분</th>
+			<th> s석</th>
+			<th> VIP</th>
+		</tr>
+		<tr>
+			<th> 성인</th>
+			<td> 30,000</td>
+			<td> 50,000</td>
+		</tr>
+		<tr>
+			<th> 청소년</th>
+			<td> 40,000</td>
+			<td> 60,000</td>
+		</tr>
+		<tr>
+			<th>소인</th>
+			<td colspan = "2">미취학 아동 일반 요금의 50%</td>
+		</tr>
+		<tr>
+			<th rowspan = "2">공연시간</th>
+			<td>1회</td>
+			<td>13:00시 ~ 15:00시</td>
+		</tr>
+		<tr>
+			<td>2회</td>
+			<td>17:00시 ~ 19:00시</td>
+		</tr>
+	</table>
+	
+	<br><br><hr><br>
+	<h3>회원정보</h3>
+	<table border ="1">
+	<tr>
+		<td rowspan = "2" colspan ="2" width="130px" height="150px"> 사진 </td>
+		<td width="80px">이름</td>
+		<td width="200px"></td>
+	</tr>
+	<tr>
+		<td>연락처</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td width="70px" height="50px">주소</td>
+		<td colspan = "3"></td>
+	</tr>
+	<tr>
+		<td height="100px">자기소개</td>
+		<td colspan = "3"></td>
+	</tr>
+	<tr>
+	</tr>
+	</table>
+	
+	<h1>테이블 태그의 구조 설정</h1>
+	
+	<table border="1">
+		<thead>
+			<tr>
+				<th>이름</th>
+				<th>나이</th>
+				<th>주소</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>강건강</td>
+				<td>20</td>
+				<td>서울시 강남구 역삼동</td>
+			</tr>
+			<tr>
+				<td>남나눔</td>
+				<td>17</td>
+				<td>서울시 노원구 하계동</td>
+			</tr>
+			<tr>
+				<td>도대담</td>
+				<td>34</td>
+				<td>서울시 중구 남대문로</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="2">총인원</td>
+				<td>3명</td>
+			</tr>
+		</tfoot>
+		
+
+	</table>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Practice1</title>
+<style>
+	#area1{border: 1px solid red; height: 150px;}
+</style>
+</head>
+<body>
+	<h1>Practice1</h1>
+	<form>
+		<fieldset>
+			<legend>취미</legend>
+			<table>
+				<tr>
+					<td><input type="checkbox" value="전체선택" id="all" onclick="selectAll();">전체선택</td>
+					<td><input type="checkbox" name="category" value="종합" id="comp" onclick="selectOne();">종합</td>
+					<td><input type="checkbox" name="category" value="소설" id="novel" onclick="selectOne();">소설</td>
+					<td><input type="checkbox" name="category" value="시/에세이" id="essay" onclick="selectOne();">시/에세이</td>
+					<td><input type="checkbox" name="category" value="경제/경영" id="econo" onclick="selectOne();">경제/경영</td>
+					<td><input type="checkbox" name="category" value="자기계발" id="develop" onclick="selectOne();">자기계발</td>
+					<td><input type="checkbox" name="category" value="아동" id="kid" onclick="selectOne();">아동</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="checkbox" name="category" value="여행" id="travel" onclick="selectOne();">여행</td>
+					<td><input type="checkbox" name="category" value="과학" id="science" onclick="selectOne();">과학</td>
+					<td><input type="checkbox" name="category" value="역사/문화" id="history" onclick="selectOne();">역사/문화</td>
+					<td><input type="checkbox" name="category" value="외국어" id="foriegn" onclick="selectOne();">외국어</td>
+					<td><input type="checkbox" name="category" value="컴퓨터" id="computer" onclick="selectOne();">컴퓨터</td>
+					<td><input type="checkbox" name="category" value="만화" id="comic" onclick="selectOne();">만화</td>
+				</tr>
+			</table>
+		</fieldset>
+	</form>
+	<br>
+	<button onclick="selectBook();">카테고리 선택</button>
+	<div id="area1" class="area"></div>
+	<script>
+		var all = document.getElementById("all");
+		var category = document.getElementsByName("category");
+
+		function selectAll(){
+			if(all.checked){
+				for(var i = 0; i < category.length; i++){
+					category[i].checked = true;
+				}
+			} else{
+				for(var i = 0; i < category.length; i++){
+					category[i].checked = false;
+				}
+			} 
+		}
+		
+		function selectOne(){
+			var count = 0;
+			
+			for(var i = 0; i < category.length; i++){
+				if(category[i].checked){
+					count++;
+				} 
+			}
+			
+			if(count != 12){
+				all.checked = false;
+			} else{
+				all.checked = true;
+			}
+		}
+		
+		function selectBook(){
+			var result = "";
+			
+			for(var i = 0; i < category.length; i++){
+				if(category[i].checked){
+					result += category[i].value + " ";
+				} else{
+					all.checked = false;
+				}
+			}
+			
+			var area = document.getElementById("area1");
+			area.innerHTML = result;
+		}
+	</script>
+</body>
+</html>

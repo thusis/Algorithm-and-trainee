@@ -1,0 +1,180 @@
+스프링입문_코드로배우는스프링부트웹MVC-DB접근기술
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>폼태그 관련</title>
+</head>
+<body>
+
+
+	<p> * 인풋태그 : 사용자에게 값을 받아와(cf. Scanner)<br>
+	* 폼태그 : 사용자가 입력한 값을 서버에 보내는 역할.<br>
+	둘은 짝꿍.</p>
+	
+	<h1>폼 관련 태그</h1>
+
+	<p>
+		form 태그는 html에서 사용자가 입력할 수 있는 양식을 제공하는 태그로<br>
+		form 태그 내의 input 태그들을 통해 사용자가 입력한 정보를 서버로 넘기는 역할을 함.<br>
+		action 속성: 폼에 입력된 값들을 전송 받을 서버 입력<br>
+		
+	</p>
+	
+	<form action = "4_영역관련.html"><!--  데이터를 넘기기 위한... 어쩌구... -->
+		<label> 검색할 내용 : </label>
+		<input type="text" name="search">
+		<input type="submit" value="검색">
+				
+	</form>
+		<br><br>
+		
+		데이터가 전달되는 목적지(서버)를 명시하지 않으면 나 자신(현재 페이지)에게 데이터를 다시 보내게 되는데<br>
+		이 때 (보낸 데이터를 포함한) 아예 새로운 페이지가 로딩된다.<br>
+		그래서 URL에 "어쩌구 저쩌구..../7_폼태그관련.html?search=목요일" 이란 주소가 나오는 것이다.<br>
+		위 개념은 서버부터 스프링파이널까지 널리 쓰이는 중요한 개념이므로 잘 알아두도록 하자 
+		<br><br>
+		<ul>
+			<li>get 방식 : url 그대로 노출, default 값 </li>
+			<li>post 방식 : url, 데이터 구조 노출하지 않는.</li>
+		</ul>
+		대체 왜 이렇게 졸린건데? 왜 잠이 전혀 안 깨다가 지금 깼다......
+		
+	<br><br><hr><br>
+	<form>
+		<fieldset>
+			<legend>필수 입력 항목</legend>
+			<label>이름 : </label><input type="text"><br>
+			<label>아이디 : </label><input type="text"><br>
+			<label>비밀번호 : </label><input type="text"><br>		
+		</fieldset>
+		<fieldset>
+			<legend>선택 입력 항목</legend>		
+			<label>취미 : </label><input type="text"><br>
+			<label>혈액형 : </label><input type="text"><br>
+			<label>별자리 : </label><input type="text"><br>
+		</fieldset>
+	</form>
+	
+	<hr>
+	
+	<h2>text 와 관련된 input 태그 속성들</h2>
+	<form>
+		<h3>hidden : 사용자 눈에는 보이지 않지만 값을 담고 보낼 수 있음.</h3>
+		<input type="hidden" value="green">
+		<br>
+		
+		<h3>text : 한 줄짜리 텍스트를 입력할 수 있음</h3>
+		<input type="text" name="userId" size="30" placeholder="아이디 입력해죠" maxlength="9" value="빵" autofocus>
+		
+		<h3>password: 비밀번호를 입력할 수 있는 텍스트상자</h3>
+		<input type="password">
+		
+		<h3>button, submit, reset</h3>
+		<input type="submit" value="전송">
+		<input type="reset" value="취소">
+		<input type="button" value="버튼">
+		
+		<p> button 태그를 이용해서도 버튼 생성 가능</p>
+		<!-- 일반 버튼 -->
+		<button> button </button>
+		버튼 태그가 폼 태그 안에 있으면 자동으로 전송 기능을 가진다.
+		
+		<!-- 전송 버튼 -->
+		<button> submit1 </button>
+		<button type="submit"> submit2</button>
+		<!--  취소 버튼 -->
+		<button type="reset">reset</button>
+	</form>
+	
+	<hr>
+	
+	<h2>라디오 버튼과 체크박스</h2>
+	<form>
+		<h3>radio</h3>
+		<label>성별 : </label>
+		<input type="radio" name="gender" value="M">남자
+		<input type="radio" name="gender" value="F">여자
+		
+		<h3>checkbox</h3>
+		<label>취미 : </label>
+		<input type="checkbox" id="baseball" name="habby" value="baseball"><label for="baseball">야구</label>
+		<input type="checkbox" id="football" name="habby" value="football"><label for="baseball">축구</label>
+		<input type="checkbox" id="basketball" name="habby" value="basketball"><label for="baseball">농구</label>
+	</form>
+	
+	<h2>file</h2>
+	<form>
+		<label>파일 선택 : </label><input type="file" accept=".txt, .mp4"multiple>
+	</form>
+	
+	<h2>HTML5 태그</h2>
+	<form>
+		<h3>search, url, email, tel</h3>
+		검색 : <input type="search"><br>
+		홈페이지 : <input type="url" value="http://"><br>
+		이메일 : <input type="email"><br>
+		전화번호 : <input type="tel"><br>
+		<input type="submit">
+	</form>
+	
+	<h2>숫자와 관련된 input태그 속성들</h2>	
+	<form>
+		<h3>number</h3>
+		<input type="number" min="0" max="50" step="5">
+		<h3>range</h3>
+		<input type="range" min="0" max="100" step="20">
+	</form>
+	
+	<h2>날짜/시간에 관련된 input태그 속성들</h2>
+	<form>
+		<h3> date, month, week, time, datetime-local</h3>
+		date : <input type="date"><br>
+		month : <input type="month"><br>
+		week : <input type="week"><br>
+		time : <input type="time"><br>
+		datetime-local : <input type="datetime-local"><br>
+	</form>
+	
+	<h2>select태그와 option태그</h2>
+	<form>
+		<label>국적 : </label>
+		<select name="nation1">
+			<option value="ko">한국</option>
+			<option value="ch">중국</option>
+			<option value="us" selected>미국</option>
+			<option value="th">태국</option>
+		</select>
+		
+		<br>
+		<label>국적 : </label>
+		<select name="nation2" size="2" multiple>
+			<option value="ko">한국</option>
+			<option value="ch">중국</option>
+			<option value="us" selected>미국</option>
+			<option value="th">태국</option>
+		</select>
+		<input type="submit">
+	</form>
+	
+	<h2>datalist</h2>
+	<form>
+		<label>과목 : </label><input type="text" list="subList">
+		<datalis id="subList">
+			<option value="java">자바</option>
+			<option value="db">디비</option>
+			<option value="dbModeling">디비모델링</option>
+			<option value="jdbc">제이디비씨</option>
+			<option value="html">HTML</option>
+		</datalist>
+	</form>
+
+	<h2>textarea</h2>
+	<form>
+		<textarea rows="30" cols="50" style="resize:none;" readonly>
+		여러 줄을 입력할 수 있음. value를 사용하지 않아용.</textarea>
+	</form>
+
+</body>
+</html>

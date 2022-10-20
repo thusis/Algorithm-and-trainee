@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>검색 항목</title>
+<style type="text/css">
+	fieldset{text-align: center; width: 450px;}
+	.box{padding: 10px; background: lightgray; width: 460px; height: 50px; display: none;}
+</style>
+</head>
+<body>
+	<h1>Practice5</h1>
+	<fieldset>
+		<legend>검색할 항목을 선택하세요.</legend>
+		<input type="radio" name="search" value="제목" onclick="selected(this);">제목&nbsp;&nbsp;&nbsp;
+		<input type="radio" name="search" value="날짜" onclick="selected(this);">날짜&nbsp;&nbsp;&nbsp;
+		<input type="radio" name="search" value="작성자" onclick="selected(this);">작성자
+	</fieldset>
+	<br>
+	<div id="titleBox" class="box">
+		<label> 검색할 제목을 입력하세요 : </label>
+		<br> 
+		<input type="search" name="title" size="50"> &nbsp;
+		<input type="submit" value="검색">
+	</div>
+	<div id="dateBox" class="box">
+		<label> 검색할 날짜를 선택하세요 : </label>
+		<br>
+		<input type="date" name="start"> - 
+		<input type="date" name="end"> &nbsp; 
+		<input type="submit" value="검색">
+	</div>
+	<div id="writerBox" class="box">
+		<label> 검색할 작성자 아이디를 입력하세요 : </label>
+		<br>
+		<input type="search" name="writer" size="25"> &nbsp; 
+		<input type="submit" value="검색">
+	</div>
+
+	<script>
+		function selected(cate){
+			if(cate.value == "제목"){
+				document.getElementById("titleBox").style.display = "block";
+				document.getElementById("dateBox").style.display = "none";
+				document.getElementById("writerBox").style.display = "none";
+			} else if(cate.value == '날짜'){
+				document.getElementById("titleBox").style.display = "none";
+				document.getElementById("dateBox").style.display = "block";
+				document.getElementById("writerBox").style.display = "none";
+			} else{
+				document.getElementById("titleBox").style.display = "none";
+				document.getElementById("dateBox").style.display = "none";
+				document.getElementById("writerBox").style.display = "block";
+			}
+		}
+	</script>
+</body>
+</html>

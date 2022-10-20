@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>simpleCalculation</title>
+</head>
+
+<body>
+    <h1>Practice2</h1>
+    <form>
+        <input type="number" id="a"></input>
+        <select id="operator">
+            <option>+</option>
+            <option>-</option>
+            <option>*</option>
+            <option>/</option>
+            <option>%</option>
+        </select>
+        <input type="number" id="b"></input>
+        <button type="button" onclick="result();">=</button>
+        <input type="text" id="c" readonly></input>
+        <script>
+            result = () => {
+                let a = Number(document.getElementById('a').value);
+                let b = Number(document.getElementById('b').value);
+                operator = document.getElementById('operator').value;
+                const c = document.getElementById('c');
+
+                let rslt;
+                
+                switch(operator){
+                    case '+': 
+                        rslt = a+b; break;
+                    case '-': 
+                        rslt = a-b; break;
+                    case '*' :
+                        rslt = a*b; break;
+                    case '/': 
+                        if(b=='0'){
+                            c.style.backgroundColor = 'red';
+                            c.style.color = 'white';
+                            rslt='연산불가';
+                            break;
+                        }
+                        rslt=a/b; break;
+                    case '%':
+                        if(b=='0'){
+                            c.style.backgroundColor = 'red';
+                            c.style.color = 'white';
+                            rslt='연산불가';
+                            break;
+                        } 
+                        rslt=a/b; break;
+                }
+                console.log(rslt);
+                c.value = rslt;
+            //    c.innerText=rslt; 안됨
+            //    c.innerText='rslt'; 안됨
+            //    c.value.innerText = rslt; 안됨
+
+            }
+
+        </script>
+    </form>
+</body>
+</html>

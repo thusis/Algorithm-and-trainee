@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>05_effect</title>
+    <script src = "../js/jquery-3.6.1.min.js"></script>
+    <style>
+        .menu{
+            width:300px; height:30px; background:yellowgreen; cursor:pointer; border-radius: 10px; text-align:center; border:1px solid green;
+        }
+        .contents{
+            border: 1px solid lightgray; width:300px; height:300px; display:none;
+        }
+    </style>
+</head>
+<body>
+    <h1>05_EFFECT</h1>
+    <h1>효과</h1>
+
+    <h2>show()와 hide()</h2>
+    <button id="show">보이기</button>
+    <button id="hide">숨기기</button>
+    <button id="toggle">토글</button><br>
+    <img id="river" src="../image/river1.PNG">
+    <script>
+        $(function(){
+            $('#show').click(function(){
+                $('#river').show(700);
+            });
+            $('#hide').click(function(){
+                $('#river').hide();
+            });
+            $('#toggle').click(function(){
+                $('#river').toggle();
+            })
+        })
+    </script>
+
+    <h2>slideDown()과 slideUp()</h2>
+    <div class="menu">첫 번째 메뉴</div>
+    <p class="contents">내용1</p>
+    <div class="menu">두 번째 메뉴</div>
+    <p class="contents">내용2</p>
+    <div class="menu">세 번째 메뉴</div>
+    <p class="contents">내용3</p>
+    <div class="menu">네 번째 메뉴</div>
+    <p class="contents">내용4</p>
+    <div class="menu">다섯 번째 메뉴</div>
+    <p class="contents">내용5</p>
+
+    <script>
+        $(function(){
+            $('.menu').click(function(){
+                // if($(this).next().css('display')=='none'){
+                //     $(this).next().slideDown();
+                // } else {
+                //     $(this).next().slideUp();
+                // }
+
+                $(this).next().slideToggle();
+            })
+        })
+    </script>
+
+    <h2>fadeIn()과 fadeOut()</h2>
+    <button id="fadeIn">fadeIn()</button>
+    <button id="fadeOut">fadeOut()</button>
+    <button id="fadeToggle">fadeToggle()</button><br>
+    <img src="../image/flower1.png" id="flower" >
+    <script>
+        $(function(){
+            $('#fadeIn').click(function(){
+                $('#flower').fadeIn(800);
+            })
+            $('#fadeOut').click(function(){
+                $('#flower').fadeOut(1000);
+            })
+            $('#fadeToggle').click(function(){
+                $('#flower').fadeToggle();
+            })
+            $('#flower').hover(function(){
+                $(this).fadeTo(700, 0.4);
+            }, function(){
+                $(this).fadeTo(800,0.1);
+            });
+
+        })
+    </script>
+
+
+</body>
+</html>

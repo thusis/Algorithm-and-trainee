@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>벼락치기를 아시나요?</title>
+</head>
+<body>
+    <h4>① document.write()</h4>
+    <script>
+    document.write('화면에 데이터 출력');
+    </script>
+  
+    <h4>② innerHTML 으로 요소 내용 변경</h4>
+    <div id = "div1">
+      자바스크립트에서 태그 앨리먼트의 값을 읽거나 변경할 때 사용
+    </div>
+    <button onclick="testInnerHTML();">innerHTML</button>
+    <script>
+      function testInnerHTML(){
+        var area=document.getElementById('div1');
+        console.log(area.innerHTML); //값 읽어오기(get)
+        area.innerHTML();
+      }
+    </script>
+  
+    <h4>③ console.log()로 개발자 도구 콘솔화면에 출력</h4>
+    <p>개발자도구 콘솔 화면에 출력하고자 할 때, 디버깅 할 때 주로 사용</p>
+    <button onclick="console1();">console.log()</button>
+    <script>
+      function console1(){
+        window.console.log('콘솔화면에 출력합니다.');
+        console.log('window를 생략할 수 있습니다.');
+      }
+    </script>
+    
+  
+    <h3>🔹데이터 입력</h3>
+    <h4>① window.confirm()</h4>
+    <p>
+      어떤 질문에 대해 예/아니오의 결과를 얻을 때 사용<br>
+      확인 버튼과 취소 버튼이 나타나며 확인 버튼 클릭 시 true, 취소 버튼 클릭 시 false 리턴
+    </p>
+    <button onclick="checkConfirm();">window.confirm()</button>
+    
+    <script>
+      function checkConfirm(){
+        var result = confirm('확인과 취소를 누를 수 있습니다.');
+        console.log(result);
+    
+      }
+    </script>
+  
+    <h4>②window.prompt() 로 입력</h4>
+    <p>
+      텍스트 필드와 확인, 취소 버튼이 있는 대화 상자<br>
+      입력받은 메세지 내용을 리턴값으로 돌려받음
+    </p>
+    <button onclick="checkPrompt();">window.prompt()</button>
+    <script>
+      function checkPrompt(){
+        var result = window.prompt('당신의 이름을 입력해주세요');
+        console.log(result);
+      
+        if(result!=null && result.trim()!=''){
+          alert(result+"님, 반갑습니다.");
+        }
+      }
+    </script>
+  
+    <hr>
+  
+    <h2>🔷HTML 태그에 접근하기</h2>
+    <h3>① 아이디로 접근 </h3> 
+    <div id="area1" class="area"></div><br>
+    <button onclick="accessId();">아이디로 접근</button>
+    <script>
+      function accessId(){
+        var area = document.getElementById('area1');
+        console.log(area);
+        area.style.backgroundColor='lavenderblush';
+        area.innerHTML+='아이디로 접근 성공!<br>';
+      }
+    </script>
+    
+
+    <script>
+        document.getEle
+
+    </script>
+
+
+</body>
+</html>

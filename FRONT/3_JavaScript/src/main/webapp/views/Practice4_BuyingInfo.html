@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>연습4 Buyinginfo</title>
+
+    <style>
+        html{
+            padding:10px;
+        }
+        fieldset{
+            width:50%; margin:15px;
+            border : 2px solid grey;
+        }
+        button{margin:20px;}
+        div{border: 1px solid lightblue; height:100%; width:50%; margin:20px;}
+    </style>
+
+</head>
+<body>
+
+    <form>
+        <fieldset>
+            <legend>구매 정보</legend>
+            <ul>
+                <li>
+                    <label for="who">구매자 : </label>
+                    <input type="text" id="who" placeholder="구매자의 이름을 입력하세요">
+                </li>
+                <li>
+                    <label for="what">상품명 : </label>
+                    <input type="text" id="what" placeholder="구매 상품명을 입력하세요">
+                </li>
+                <li>
+                    <label for="price">가격 : </label>
+                    <input type="number" id="price" placeholder="구매 가격을 입력하세요">
+                </li>
+                <li>
+                    <label for="many">구매 수량 : </label>
+                    <input type="number" id="many" placeholder="최소10." min="10" max="100" step="10">
+                </li>
+                <li>
+                    <label for="grade">납품 등급 : </label>
+                    <input type="range" id="grade" min="1" max="9" step="2">
+                </li>
+                <li>
+                    <label for="etc">기타사항 : </label>
+                    <textarea rows="4" cols="20" style="resize:none;" id="etc"></textarea>
+                </li>
+            </ul>
+        </fieldset>
+    </form>
+    <button onclick="printf();">입력 값 출력하기</button>
+    <div id="print"></div>
+
+    <script>
+        printf=()=>{
+            document.getElementById('print').innerHTML = "구매자 명 : " +
+            document.getElementById('who').value + "님 <br>상품 명 : " +
+            document.getElementById('what').value+ "<br>가격 : " +
+            document.getElementById('price').value+ " 만원<br>구매 수량 : " +
+            document.getElementById('many').value + " 개<br>납품등급 : " + 
+            document.getElementById('grade').value + " 등급<br>기타사항 : " + 
+            document.getElementById('etc').value ;
+        }
+    </script>
+
+
+
+ 
+</body>
+</html>

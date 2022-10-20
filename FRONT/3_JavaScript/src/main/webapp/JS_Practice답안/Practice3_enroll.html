@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Practice3</title>
+</head>
+<body>
+	<h1>Practice3-1</h1>
+	<!-- 
+		onkeypress, onkeydown, onkeyup
+		https://ggmouse.tistory.com/179
+		https://simplesolace.tistory.com/entry/자바스크립트예제-아이디-중복확인-예제-문자열-비교
+	 -->
+	<fieldset>
+		<legend>회원가입</legend>	
+		아이디 : <input type="text" id="userId" name="userId" onkeyup="validate();">
+		<span id="existId"></span>
+		<br><br>
+		비밀번호 : <input type="password" id="userPwd1" name="userPwd1">
+		<br><br>
+		비밀번호 확인 : <input type="password" id="userPwd2" name="userPwd2" onblur="focusOut();">
+		<span id="equalsPwd"></span>
+		<br><br>
+		이름 : <input type="text" id="name" name="name">
+		<br><br>
+		<button onclick="enroll();">회원가입</button>
+	</fieldset>
+	
+	<script>
+		var userId = document.getElementById('userId');
+		var existId = document.getElementById('existId');
+		var equalsPwd = document.getElementById('equalsPwd');
+		var userPwd1 = document.getElementById('userPwd1');
+		var userPwd2 = document.getElementById('userPwd2');
+		var userName = document.getElementById('name');
+		var checkId = false;
+		var checkPwd = false;
+		
+		function validate(){
+			if(userId.value == '' || userId.value.length == 0){
+				existId.innerText = '';
+			} else if(userId.value == 'user01'){
+				existId.innerText = '이미 존재하는 아이디입니다.';
+				existId.style.color = 'red';
+				checkId = false;
+			} else{
+				existId.innerText = '사용가능한 아이디입니다.';
+				existId.style.color = 'green';
+				checkId = true;
+			}
+		}
+		
+		function focusOut(){
+			if(userPwd2.value == '' || userPwd2.value.length == 0){
+				equalsPwd.innerText = '';
+			} else if(userPwd2.value != userPwd1.value){
+				equalsPwd.style.color = 'red';
+				equalsPwd.innerText = '비밀번호가 일치하지 않습니다.';
+				checkPwd = false;
+			} else{
+				equalsPwd.style.color = 'green';
+				equalsPwd.innerText = '비밀번호가 일치합니다.';
+				checkPwd = true;
+			}
+		}
+		
+		function enroll(){
+			if(userId.value == '' || userId.value.length == 0){
+				alert('아이디를 입력해주세요');
+				userId.focus();
+			} else if(userPwd1.value == '' || userPwd1.value.length == 0){
+				alert('비밀번호를 입력해주세요');
+				userPwd1.focus();
+			} else if(userPwd2.value == '' || userPwd2.value.length == 0){
+				alert('비밀번호 확인을 입력해주세요');
+				userPwd2.focus();
+			} else if(userName.value == '' || userName.value.length == 0){
+				alert('이름을 입력해주세요');
+				userName.focus();
+			} else if(!checkId){
+				alert('사용할 수 없는 아이디입니다.');
+				userId.value = '';
+				userId.focus();
+			} else if(!checkPwd){
+				alert('비밀번호가 일치하지 않습니다.');
+				userPwd2.value = '';
+				userPwd2.focus();
+			} else{
+				alert(userName.value + "님, 회원가입이 성공적으로 완료되었습니다^^");
+				userId.value = '';
+				userPwd1.value = '';
+				userPwd2.value = '';
+				userName.value = '';
+				existId.innerHTML = '';
+				equalsPwd.innerHTML = '';
+			}
+		}
+	</script>
+</body>
+</html>

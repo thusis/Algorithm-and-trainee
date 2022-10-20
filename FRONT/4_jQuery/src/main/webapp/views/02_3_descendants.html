@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Descendants 메소드</title>
+    <script src = "../js/jquery-3.6.1.min.js"></script>
+    <style>
+        .wrap *{
+            border:1px solid lightgray;
+            display:block;
+            padding:5px; margin:15px;
+        }
+        .type{width:500px;}
+    </style>
+</head>
+<body>
+
+    <h1>객체탐색</h1>
+    <h2>탐색 메소드</h2>
+    <h3>Descendants 메소드</h3>
+    <p>선택된 요소의 하위 요소들을 선택할 수 있는 메소드</p>
+    <div class="wrap">
+        <div class="type">div(great-grandparent)
+            <ul>ul(grandparent)
+                <li>li(direct parent)
+                    <span>span1</span></li>
+
+                <li>li(direct parent)
+                    <span>span2</span></li>
+            </ul>
+        </div>
+        <div class="type">div(grandparent)
+            <p>p(direct paremt)
+                <span>span</span></p>
+        </div>
+    </div>
+    
+    <script>
+        $(function(){
+            const style1={'color':'red','border':'2px solid red'};
+            const style2={'color':'blue', 'border':'2px solid blue'};
+            const style3={'color':'green', 'border':'2px solid green'};
+            const style4={'color':'pink', 'border':'2px solid pink'};
+            const style5={'color':'orange', 'border':'2px solid orange'};
+
+            console.log($('.wrap').children());
+            $('.wrap').children().css(style1);
+            $('.wrap').children().children().css(style2);
+            $('.wrap').children().children('ul').css(style3);
+            $('.wrap').find('span').css(style4);
+
+            //span1과 span2 만 주황색으로 바꾸기
+
+            // $('.wrap').children().children().children().children().css(style5);
+            // $('.wrap').children().children('ul').children().children().css(style5);
+            // $('.wrap').children().children('ul').find('span').css(style5);
+            // $('.wrap').find('li').children().css(style5);
+            // $('.wrap').find('ul').find('span').css(style5);
+            $('li').children().css(style5);
+        })
+    </script>
+</body>
+
+</html>

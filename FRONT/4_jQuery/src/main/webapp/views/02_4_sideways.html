@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Sideways 메소드</title>
+    <script src = "../js/jquery-3.6.1.min.js"></script>
+
+    <style>
+        .wrap, .wrap *{
+            border: 1px solid lightgray; display:block; padding:5px; margin:15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>객체 탐색</h1>
+    <h2>탐색 메소드</h2>
+    <h3>Sideways 메소드</h3>
+    <div class="wrap">div(parent)
+        <p>p</p>
+        <span>span</span>
+        <h4>h4</h4>
+        <h5>h5</h5>
+        <p>p</p>
+    </div>
+
+    <script>
+        $(function(){
+            $('h4').siblings().css({'color':'red', 'border':'2px solid red'});
+            $('h4').siblings('p').css({'color':'orange', 'border':'2px solid orange'});
+
+            $('h4').next().css({'color':'blue','border':'2px solid blue'});
+            $('h4').nextAll().css('font-size', '50px');
+            $('h4').nextUntil('p').css('border-style', 'dashed');
+
+            $('h4').prev().css({'background': 'red', 'color':'white'});
+            $('h4').prevAll().css({'background': 'beige', 'color':'red'});
+            $('h4').prevUntil('p').css('border', 'double');
+        })
+    </script>
+
+    <hr>
+
+    <h2>객체 탐색 테스트</h2>
+    <table border="1">
+        <tr>
+            <th>이름</th>
+            <th>나이</th>
+            <th>취미</th>
+        </tr>
+        <!-- <tr onclick="test1();"> -->
+        <tr>
+            <td>강건강</td>
+            <td>25</td>
+            <td>운동</td>
+        </tr>
+        <!-- <tr onclick="test2();"> -->
+        <tr>    
+            <td>남나눔</td>
+            <td>17</td>
+            <td>요리</td>
+        </tr>
+        <!-- <tr onclick="test3();"> -->
+        <tr>
+            <td>도대담</td>
+            <td>30</td>
+            <td>등산</td>
+        </tr>
+    </table>
+    <label for="">선택한 게시물 : </label>
+    <label for="" id="selectName"></label> /
+    <label for="" id="selectAge"></label> /
+    <label for="" id="selectHobby"></label>
+
+    <script>
+    //  S   E   L   F
+        // const test1 = () => {
+        //     $('#selectName').text($('tr:eq(1)').children('td:eq(0)').text());
+        //     $('#selectAge').text($('tr:eq(1)').children('td:eq(1)').text());
+        //     $('#selectHobby').text($('tr:eq(1)').children('td:eq(2)').text());
+        // }
+        // const test2 = () => {
+        //     $('#selectName').text($('tr:eq(2)').children('td:eq(0)').text());
+        //     $('#selectAge').text($('tr:eq(2)').children('td:eq(1)').text());
+        //     $('#selectHobby').text($('tr:eq(2)').children('td:eq(2)').text());
+        // }
+        // const test3 = () => {
+        //     $('#selectName').text($('tr:eq(3)').children('td:eq(0)').text());
+        //     $('#selectAge').text($('tr:eq(3)').children('td:eq(1)').text());
+        //     $('#selectHobby').text($('tr:eq(3)').children('td:eq(2)').text());
+        // }
+
+//        $(function(){
+            // $('tr').click(function(){
+            //     console.log($(this));
+            //     const tdNodes = $(this).children('td');
+            //     console.log(tdNodes);
+
+            //     const name = tdNodes.eq(0).text();
+            //     const age = tdNodes.eq(1).text();
+            //     const hobby = tdNodes.eq(2).text();
+
+            //     $('#selectName').text(name);
+            //     $('#selectAge').text(age);
+            //     $('#selectHobby').text(hobby);
+            // })
+
+        $(function(){
+            const trArr = document.getElementsByTagName('tr');
+            for(const i in trArr){
+                trArr[i].onclick = function(){
+                    console.log($(this));
+                    const tdNodes = $(this).children('td');
+                    console.log(tdNodes);
+
+                    const name = tdNodes.eq(0).text();
+                    const age = tdNodes.eq(1).text();
+                    const hobby = tdNodes.eq(2).text();
+
+                    $('#selectName').text(name);
+                    $('#selectAge').text(age);
+                    $('#selectHobby').text(hobby);
+                 }
+            }
+        });
+    </script>
+
+
+</body>
+</html>

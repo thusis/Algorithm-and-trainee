@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체05_Object</title>
+
+    <style>
+        div{
+            border: 1px solid black;            
+            justify-items: auto;
+            align-items: center;
+            width:400px; padding:10px; margin:13px;
+            background-color: rgba(235, 235, 235, 0.192);
+            
+        }
+        .link{
+            display: flex;
+            width:45vh; margin:5px; padding:2px;
+            border-radius: 3px;
+            background-color: gold;
+            border:0px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <a href="../index.html">인덱스로 돌아가기</a><br><br>
+
+    <h1>Lecture07 객체</h1>
+    <h2>1️⃣ 객체 선언 및 호출</h2>
+    <p>중괄호{}를 사용하여 객체 생성, <br>속성에는 모든 자료형이 올 수 있음</p>
+
+    <button onclick="basic();">실행확인</button>
+    <script>
+        const basic = () => {
+            const product = {
+                pName: 'dry mango',
+                type: 'pickle',
+                ingredient: ['mango', 'sugar'],
+                origin: 'Philippines'
+            }
+            console.log(product);
+
+            //객체명 ['속성명']
+            console.log(product['pName']);
+            console.log(product['type']);
+            console.log(product['ingredient']);
+            console.log(product['ingredient'][0]);
+            console.log(product['ingredient'][1]);
+            console.log(product['origin']);
+
+            //객체명.속성명
+            console.log(product.pName);
+            console.log(product.type);
+            console.log(product.ingredient);
+            console.log(product.ingredient[0]);
+            console.log(product.ingredient[1]);
+            console.log(product.origin);
+            console.log(product.origin[1]); // 걍 문자열도 배열처럼 문자가 뽑히네?
+
+            // product = 'test'; //const를 변경할 수 없으므로 Uncaught TypeError: Assignment to constant variable. 라고 오류가 뜰텐데
+
+            product.origin = 'Korea'; //product의 origin을 바꾸는 것은 가능함.
+            console.log(product);
+        }
+    </script>
+
+    <div>
+        <h3>[1] 객체의 키 식별자 테스트</h3>
+        <p>객체의 키는 모든 문자열 사용 가능, 식별자로 사용할 수 없는 단어를 키로 사용한 경우 _____ </p>
+        <button onclick="keyTest();">실행확인</button>
+        <script>
+            const keyTest = () => {
+                const objTest = {
+                    'lo$ve':'퇴근',
+                    'lo_ve':'5시 50분',
+                    'lo ve':'취업'
+                }
+
+                console.log(objTest);
+
+                console.log(objTest['lo$ve']);
+                console.log(objTest['lo_ve']);
+                console.log(objTest['lo ve']);
+                console.log(objTest.lo$ve);
+                console.log(objTest.lo_ve);
+//                console.log(objTest.lo ve);
+            }
+        </script>
+    </div>
+    <div>
+        <h3>[2]객체의 메소드 속성</h3>
+        <p>객체의 속성 중 함수 자료형인 속성을 메소드라고 함</p>
+        <button onclick="objMethod();">실행확인</button>
+        <script>
+
+            const objMethod = () => {
+                const dog = {
+                    name1 : '꽁꽁',
+                    name2 : '다롱',
+                    eat : function(food){
+                        // let name1 = '123';
+                        // let name2 = '345';
+                    
+                        console.log(this.name1+"이와 "+this.name2+"이가 "+food+"를 먹는 중");
+                    }
+                }
+                dog.eat('사료'); //dog is not defined
+            };
+        </script>
+    </div>
+    <div>
+        <h3>[3] 객체와 반복문</h3>
+        <p>객체의 속성을 살펴볼 때는 단순 for문으로는 불가능하고, for in문을 사용해야 함<br>
+        <div class="link">
+            <b>mdn:</b><a href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/keys">Object.keys()</a>
+        </div>
+        </p>
+        <button onclick="objFor();">실행확인</button>
+        <script>
+            const objFor = () => {
+                const movie = {
+                    title: '공조2:인터내셔날',
+                    releaseDate: '2022-09-07',
+                    director: '이석훈',
+                    mainActor: ['현빈', '유해진', '윤아', '다니엘헤니', '진선규'],
+                    screening: true
+                };
+//               console.log(movie.size()); // movie.size is not a function
+                console.log(movie.size); //undefined
+                console.log(movie.length); //undefined
+
+                for(const key in movie){
+                    console.log(key);
+                    console.log(key+":"+movie[key]);
+                }
+            };
+        </script>
+    </div>
+
+    <h2>2️⃣객체 속성 추가 및 제거</h2>
+    <p>처음 객체 생성 이후 속성을 추가하거나 제거하는 것을<br> '동적으로 속성을 추가한다' 혹은 '제거한다'라고 함</p>
+    
+    <button onclick="addObjArg();">실행확인</button>
+    <script>
+        const addObjArg = () => {
+            const student = {};
+            console.log(student);
+
+            student.name = '강건강';
+            student.hobby = '프로그래밍';
+            student['strength'] = '끈기';
+            student['dream']='구글 입사';
+            
+            student.toString = function(){
+                let str = '';
+                for(const key in this){
+                    if(key != 'toString'){
+                        str += key + ":" + this[key];
+                    }
+                }
+                return str;
+            }
+            console.log(student);
+            console.log(student.toString());
+
+            delete(student.strength);
+            console.log(student);
+        }
+    </script>
+
+    <h2>3️⃣객체배열</h2>
+    <p>push, get 사용</p>
+    <button onclick="objArr();">실행 확인</button>
+    <script>
+        const objArr = () => { 
+            const student0 = {name: '강건강', java:90, oracle:70, front:100};
+            const student1 = {name: '윤예의', java:63, oracle:55, front:42};
+            const student2 = {name: '차청춘', java:16, oracle:12, front:75};
+            const student3 = {name: '문미미', java:85, oracle:54, front:13};
+            const student4 = {name: '류라라', java:54, oracle:45, front:99};
+
+            const students = [];
+            students.push(student0);
+            students.push(student1);
+            students.push(student2);
+            students.push(student3);
+            students.push(student4);
+
+            for(var i in students){
+                students[i].getSum = function(){
+                    let sum = 0;
+                    for(const key in this){
+                        if(key != 'name' && key != 'getSum' && key!='getAvg'){
+                            sum += students[i][key];
+                        }
+                    }
+                    return sum;
+                }
+                students[i].getAvg = function(){
+                    return this.getSum()/3;
+                }
+            }
+
+            console.log(students);
+
+            for(const i in students){
+                console.log(students[i].name
+                        + ", " + students[i].getSum()
+                        + ", "+ students[i].getAvg());
+            }
+        }
+
+    </script>
+
+
+
+</body>
+</html>

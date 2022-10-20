@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>멀티미디어 관련</title>
+</head>
+<body>
+	<h1>이미지 관련 태그</h1>
+	<p> &lt;img&gt;를 이용의 src 속성을 이용해서 이미지 파일을 불러옴</p>
+	<h3>경로 찾기 : 어렵다고 생각하지 않아서 자신감을 갖는 부분이지만...<br>
+	잘못 쓰는 경우가 많기 때문에 본인과 동일한 단에 있는 폴더가 무엇인지, 어떻게 찾아올 수 있는지<br>
+	잘 생각해보자.</h3>
+	<img src="sample/image/river1.PNG">⬅️ img 태그는 <mark>인라인</mark> 요소다
+	
+	<hr>
+	<h2>자주 사용하는 속성들</h2>
+	<h3>alt(alternate) 속성</h3>
+	<img src="s/image/river2.PNG" alt="푸른 강 사진">
+	<p>
+	 위처럼 사진의 경로가 잘못 되거나 이미지를 제대로 표현할 수 없는 경우 대체 텍스트의 용도로 사용 가능<br>
+	 뿐만 아니라 화면 낭독기는 이미지를 읽을 수 없기 때문에 대체되는 텍스트 필요.
+	</p>
+	<img src="sample/image/river2.PNG" alt="푸른 강 사진">
+	
+	<br>
+	<h3> width 와 height 속성</h3>
+	<h4> 고정 크기 단위</h4>
+	<img src = "sample/image/flower1.PNG" width="200px" height="150px">
+	<img src = "sample/image/flower2.PNG" width="200px" height="150px">
+	<img src = "sample/image/flower3.PNG" width="200px" height="150px">
+	<img src = "sample/image/flower4.PNG" width="200px" height="150px">
+	<img src = "sample/image/flower5.PNG" width="200px" height="150px">
+	
+	<h4> 가변 크기 단위</h4>
+	<img src = "sample/image/flower1.PNG" width="15%" height="150px">
+	<img src = "sample/image/flower2.PNG" width="15%" height="150px">
+	<img src = "sample/image/flower3.PNG" width="15%" height="150px">
+	<img src = "sample/image/flower4.PNG" width="15%" height="150px">
+	<img src = "sample/image/flower5.PNG" width="15%" height="150px">
+	wwww
+	
+	<hr>
+	
+	<h4>이미지 구역을 2개로 나눠 각각 링크 설정</h4>
+	<img src="sample/image/river1.PNG" usemap="#imageMap">
+	<map name="imageMap">
+		<area shape="rect" coords="0, 0, 300, 500" href="https://www.naver.com" target="blank">
+		<area shape="rect" coords="300, 0, 600, 500" href="https://www.google.com">
+	</map>
+	
+	<hr>
+	<iframe width="900px" height="480px" src="sample/image.city1.PNG"> </iframe>
+	<iframe width="900px" height="480px" src="https://www.naver.com"> </iframe>
+	<iframe width="900px" height="480px" src="https://www.iei.or.kr"> </iframe>
+	<iframe width="900px" height="480px" src="1_글자관련.html"> </iframe>
+	
+	<h1>오디오 관련 태그</h1>
+	<audio src="sample/audio/song.mp3"></audio> ⬅️ 재생 바 생성 안 된다.<br>
+	<audio src="sample/audio/song.mp3" controls></audio> ⬅️ controls 재생 바<br>
+	<audio src="sample/audio/song.mp3" controls autoplay></audio> ⬅️ autoplay 자동재생<br>
+	<audio src="sample/audio/song.mp3" controls autoplay loop></audio> ⬅️ 자동재생 + loop 반복<br>
+	
+	<h1>비디오 관련 태그</h1>
+	1.<video src = "sample/video/bear.mp4"></video> ⬅️ 사진만 뜨고 동영상 실행 안 됨<br>
+	2.<video src = "sample/video/bear.mp4" controls></video> ⬅️ controls 를 넣어야 재생이 됨.<br>
+	3.<video src = "sample/video/bear.mp4" controls autoplay></video> ⬅️ autoplay<br>
+	4.<video src = "sample/video/bear.mp4" controls autoplay loop></video> ⬅️ autoplay+loop<br>
+	<h4>5-1.</h4>✔️ preload="auto": 동영상 모든 정보 미리로드<br>
+	<video src = "sample/video/bear.mp4" controls preload="auto"></video>
+	<h4>5-2.</h4>✔️ preload="metadate": 동영상 기본 정보 미리 로드<br>
+	<video src = "sample/video/bear.mp4" controls preload="metadata"></video> 
+	<h4>5-3.</h4>✔️ preload="none": 미리 로드 없음<br>
+	<video src = "sample/video/bear.mp4" controls preload="none"></video> 
+	
+
+</body>
+</html>

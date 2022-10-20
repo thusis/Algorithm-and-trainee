@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>09_Event</title>
+</head>
+<body>
+    <h1>이벤트</h1>
+    <h2>이벤트 설정 방법</h2>
+    <h3>1️⃣ 인라인 모델</h3>
+    <button onclick="test1();">실행확인1_1</button>
+    <button onclick="alert('test1이 실행됐습니다.');">실행확인1_2</button>
+    <script>
+    const test1 = () => {
+        alert('test1이 실행됐습니다.');
+    }
+    </script>
+    
+    <h3>2️⃣ 고전 이벤트 모델</h3>
+    <button id="test2">실행확인2</button>
+    <button id="test3">실행확인3</button>
+    <button id="test3_2">실행확인3_2</button>
+
+    <script>
+        const test2 = document.getElementById('test2');
+        const test3 = document.getElementById('test3');
+
+        console.log(test2);
+
+        test2.onclick = () => {
+            console.log('test2가 실행되었습니다.');
+        }
+        test3.onclick = () => {
+            console.log('test3이 실행되면서 동시에 test2 클릭이벤트를 삭제했습니다.');
+            test2.onclick = null;
+        }
+
+        const test32 = document.getElementById('test3_2');
+        const test3_2 = () => {
+            alert('이름을 이용해서 연결하기');
+        }
+        test32.onclick = test3_2;
+        test32.onmouseover = () => {
+            console.log('여러 이벤트 동시 연결 가능 : 마우스 오버');
+        }
+    </script>
+
+    <h4>이벤트 발생 객체</h4>
+    <button id="test4">실행확인4</button>
+    <script>
+        //버튼을 눌렀을 때 버튼에 대한 배경색 및 글자색이 검은색/하얀색으로 바뀌게 하기
+        //한 번 더 누르면 원래대로
+        const test4=document.getElementById('test4');
+        
+        //try - self (성공)
+        // test4.onclick = () => {
+        //     if(test4.style.backgroundColor == "black"){
+        //         test4.style = null; 
+        //     }else{
+        //         test4.style.backgroundColor = "black";
+        //         test4.style.color = 'white';
+        //     }
+        // }
+
+        //try - 1. count
+        let count = 0;
+        test4.onclick=()=>{
+            count++;
+            if(count%2!=0){
+                test4.style.backgroundColor = 'black';
+                test4.style.color = 'white';
+            } else {
+                test4.style.backgroundColor = null;
+                test4.style.color = null;
+            }
+        }
+    </script>
+
+    <h3>3️⃣ 표준이벤트 모델</h3>
+    <button id="test5">실행확인5</button>
+    <button id="test6">실행확인6</button>
+    <script>
+        const test5 = document.getElementById('test5');
+        const test6 = document.getElementById('test6');
+
+        const fn_test5_1 = () => {
+            console.log('test5가 클릭되었습니다.');
+        }
+        const fn_test5_2 = () => {
+            console.log('test5에 들어왔습니다.');
+        }
+
+        test5.addEventListener('click', fn_test5_1);
+        test5.addEventListener('mouseover', fn_test5_2);
+
+        test6.addEventListener('mouseover', e=>{
+            test5.removeEventListener('click', fn_test5_1);
+            console.log('test6이 실행되면서 test5 클릭이벤트 제거');
+        })
+    </script>
+
+    <h2>기본이벤트 제거</h2>
+    <form onsubmit="return test7();">
+        <label for="name">이름: </label><input type="text name="name" id="name"><br>
+        
+        <label for="userId">아이디: </label><input type="text" name="userId" id="userId"><br>
+        
+        <label for="password">비밀번호: </label><input type="password" name="password" id="password"><br>
+        
+        <label for="passwordConfirm"></label><input type="password" name="passwordConfirm" id="passwordConfirm"><br>
+        
+        <!-- <input type="submit" value="제출" onclick="test7();"> -->
+        <input type="submit" value="제출">
+
+    </form>
+    <script>
+        const test7 =()=>{
+            const name=document.getElementById('name').value;
+            const userId=document.getElementById('userId').value;
+            const password=document.getElementById('password').value;
+            const password2=document.getElementById('passwordConfirm').value;
+
+            console.log(name); console.log(userId); console.log(password); console.log(password2);
+
+            if(password == password2){
+                alert('비밀번호가 일치합니다.');
+                return true;
+            } else {
+                alert('비밀번호가 일치하지 않습니다.');
+                return false;
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>04_event</title>
+    <script src = "../js/jquery-3.6.1.min.js"></script>
+    <style>
+        .test{width:150px; height:50px; border:1px solid black;
+        text-align: center; display:table-cell; vertical-align: middle;}
+        .outer{width:100px; height:50px; background:powderblue; padding:30px;}
+        .inner{width:100%;height:100%;background:white;}
+        .reverse{background:black; color:white;}
+    </style>
+</head>
+<body>
+
+    <h1>이벤트</h1>
+    <h2>1️⃣이벤트 관련 속성</h2>
+
+    <p> 
+        이벤트 핸드러의 매개인자로 event 객체 전달
+    </p>
+    <button onclick="test1(event);">실행확인</button>
+    
+    <script>
+        const test1 = (e) => {
+            console.log(e);
+            console.log(e.target);
+        }
+    </script>
+
+    <h22️⃣이벤트 연결 종류</h2>
+    <h3>on() 와 off()</h3>
+    <p>
+        on() : 현재 존재하는 문서 객체에 이벤트 연결 <br>
+        off() : on()으로 연결된 이벤트 제거 <br>
+    </p>
+    <div id="onOff" class="test">기본상태</div>
+
+    <script>
+        $(function(){
+            $('#onOff').click(function(){
+                console.log($(this).text());
+            });
+            $('#onOff').on({
+                'mouseenter': function(){
+                    $(this).css('background','beige').text('마우스 올라감');
+                },
+                'mouseleave':function(){
+                    $(this).css('background', 'powderblue').text('마우스 내려감');
+                },
+                'click':function(){
+                    $(this).off('mouseenter').off('mouseleave').text('기본 값').css('background','white');
+                }
+            });
+        })
+    </script>
+
+    <h2>3️⃣ 이벤트 종류</h2>
+    <h3>마우스 이벤트</h3>
+    <h4>mouseenter/mouseleaver(), mouseover/mouseout()</h4>
+    <div id="mouseEvent1" class="outer">
+        <div class="inner"></div>
+    </div>
+    <br>
+    <div id="mouseEvent2" class="outer">
+        <div class="inner"></div>
+    </div>
+
+    <script>
+        $(function(){
+            $('#mouseEvent1').on('mouseover', function(){
+                console.log($(this).attr('id')+' over!');
+            })
+            $('#mouseEvent1').on('mouseout', function(){
+                console.log($(this).attr('id')+' out!');
+            })
+            $('#mouseEvent2').on('mouseover', function(){
+                console.log($(this).attr('id')+' over!');
+            })
+            $('#mouseEvent2').on('mouseleave', function(){
+                console.log($(this).attr('id')+' leave!');
+            })
+        })
+    </script>
+
+    <h4>hover() </h4>
+    <p>mouseenter() 와 mouseleave()를 동시에 사용하는 효과</p>
+    <div id="hoverEvent" class="test">기본상태</div>
+    <script>
+        $(function(){
+            // 마우스가 올라가면 배경 검은색, 글자 하얀색
+            // 마우스가 내려가면 배경 하얀색, 글자 검은색
+
+            // $('#hoverEvent').on('mouseover',function(){
+            //     $(this).css({'background':'black', 'color':'white'})
+            // }).on('mouseleave', function(){
+            //     $(this).css({'background':'white', 'color':'black'})
+            // });
+
+            // $('#hoverEvent').mouseover(function(){
+            //     $(this).addClass('reverse');
+            // }).mouseleave(function(){
+            //     $(this).removeClass('reverse');
+            // })
+
+            $('#hoverEvent').hover(function(){
+               // $(this).addClass('reverse');
+               $(this).toggleClass('reverse');
+            }, function(){
+               // $(this).removeClass('reverse');
+               $(this).toggleClass('reverse');
+            })
+            //hover 이벤트의 인자(함수)가 두 개, 첫 번째 인자는 mouseenter 상황에 적용되는 함수, 두 번째 인자는 mouseleave
+        })
+    </script>
+
+    <h3>키보드 이벤트</h3>
+    <h4>keydown(), keypress(), keyup()</h4>
+    <textarea id="keyEvent" cols="40" rows="5"></textarea>
+    <script>
+        $(function(){
+            $('#keyEvent').keydown(function(e){
+                console.log('keydown : ' + e.key);
+            });
+            $('#keyEvent').keypress(function(e){
+                console.log('keypress : ' + e.key);
+            })
+            $('#keyEvent').keyup(function(e){
+                console.log('keyup :' + e.key);
+            })
+        });
+    </script>
+
+    <h4>동적으로 글자수 세기</h4>
+    <span id="counter">0</span>/150<br>
+    <textarea id="textTest" cols="70" rows="5"></textarea>
+    <script>
+        // $(function(){
+        //     let count = 0;
+        //     $('#textTest').keydown(function(e){
+        //         if(e.key=='Backspace'){
+        //             if(count==0){
+        //                 $('#counter').text(0);
+        //             }else{
+        //                 count--;
+        //                 $('#counter').text(count);
+        //             }
+        //         }else{
+        //             if(count>=150 && count<170){
+        //                 $('#counter').css('color','red');
+        //                 count++;
+        //                 $('#counter').text(count);
+        //             }
+        //             else if(count >= 170){
+        //                 $('#textTest').attr('readonly','true');
+        //                 alert('더 이상 입력할 수 없습니다');
+        //             }else{
+        //                 if($('#textTest').attr('readonly')=='true'){
+        //                     $('#textTest').attr('readonly','false');
+        //                 }
+        //                 count++;
+        //                 $('#counter').text(count);
+        //             }
+        //         }
+        //     })
+        // })
+        $(function(){
+            $('#textTest').keyup(function(){
+                const input = $(this).val();
+                const inputLength = input.length;
+                $('#counter').html('<b>' + inputLength + '</b>');
+            
+                if(inputLength>150){
+                    $('#counter').css('color', 'red');
+                }else{
+                    $('#counter').css('color', 'black');
+                }
+
+                const piece = input.substr(0, 150);
+                $(this).val(piece);
+            })
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

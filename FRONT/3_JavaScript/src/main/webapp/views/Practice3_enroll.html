@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>enroll</title>
+</head>
+<body>
+    <h1>Practice3</h1>
+    <form >
+        <fieldset>
+            <legend>회원가입</legend>
+            <label for="id">아이디 : </label>
+            <input type="text" id="id"> <span id="spanid"></span><br><br>
+
+            <label for="pw">비밀번호 : </label>
+            <input type="password" id="pw"><br><br>
+
+            <label for="pwcheck">비밀번호 확인 : </label>
+            <input type="password" id="pwcheck"> <span id="spanpw"></span><br><br>
+
+            <label for="name">이름 : </label>
+            <input type="text" id="name"><br><br>
+
+            <button type="button" onclick="submitcheck();">회원가입</button>
+        </fieldset>
+    </form>
+
+    <script>
+        Member = {
+            id : 'user01',
+            pw : 'null',
+            name : 'null'
+        };
+
+        const inputid=document.getElementById('id');
+        const inputpw=document.getElementById('pw');
+        const inputpwcheck=document.getElementById('pwcheck');
+        const inputname=document.getElementById('name');
+
+        const spanid = document.getElementById('spanid');
+        const spanpw = document.getElementById('spanpw');
+
+        inputid.addEventListener('input', function(){
+            if(inputid.value!='user01'){
+                console.log(inputid.value);
+                console.log('value is changed')
+                spanid.style.color = 'green';
+                spanid.innerText = "사용 가능한 아이디입니다.";
+            } else {
+                spanid.style.color = 'red';
+                spanid.innerText = "이미 존재하는 아이디입니다.";
+            }
+        })
+
+        inputpwcheck.addEventListener('blur', function(){
+            if(inputpw.value!=inputpwcheck.value){
+                spanpw.style.color="red";
+                spanpw.innerText="비밀번호가 일치하지 않습니다.";
+            } else {
+                spanpw.style.color="green";
+                spanpw.innerText="비밀번호가 일치합니다.";
+            }
+        })
+
+        submitcheck = () => {
+            let check = {
+                '아이디':inputid,
+                '비밀번호란':inputpw,
+                '비밀번호확인' : inputpwcheck,
+                '이름란':inputname
+            }
+            let emtcheck=document.getElementsByTagName('input');
+
+            console.log(emtcheck);
+            for(let i in emtcheck){
+                if(emtcheck[i].value==""){
+                    emtcheck[i]
+                    // alert()
+                }
+            }
+
+
+
+            console.log(check);
+            console.log('아이디');
+            console.log(check['아이디'].value);
+
+
+        }
+
+    </script>
+
+</body>
+</html>

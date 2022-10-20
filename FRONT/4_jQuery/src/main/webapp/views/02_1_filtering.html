@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>필터링 메소드</title>
+    <script src = "../js/jquery-3.6.1.min.js"></script>
+</head>
+<body>
+    <h1>객체 탐색</h1>
+    <h2>필터링 메소드</h2>
+    <p>필터 메소드를 사용해 문서 객체 선택</p>
+    <h4 class="test">test-a</h4>
+    <h4 class="test">test-b</h4>
+    <h4 class="test">test-c</h4>
+    <h4 class="test">test-d</h4>
+    <h4>test-e</h4>
+    <h4 class="test">test-f</h4>
+
+    <script>
+        $(function(){
+            //h4 중 짝수번째 있는 곳에 배경 검은색, 글자색 빨간색
+            // $('h4:even').css({'background':'black', 'color':'red'});
+            $('h4').filter(':even').css({'background':'tomato', 'color':'white'});
+            $('h4').filter(':odd').css({'background':'yellowgreen', 'color':'white'});
+            $('h4').first().css('font-size','30px');
+
+            // $('h4').last().text()// = JavaScript innerText
+            // $('h4').last().html()
+            // console.log($('h4').last().text()); 
+            // console.log($('h4').last().html());
+            //value는 input 태그 안에 있는 값을 가져올 때 사용하지만, ....
+
+            $('h4').last().css('font-size','30px');
+            $('h4').last().text($('h4').last().text()+" : 마지막요소");
+            // test() = JavaScript innerText : 객체 안의 내용을 조회하거나 수정할 때 사용
+            $('h4').eq(3).text($('h4').eq(3).text()+":eq()메소드로 필터링 됨");
+            $('h4').not('.test').css({'background':'yellow','color':'black'});
+
+
+
+                        
+        })
+    </script>
+
+
+
+
+</body>
+</html>

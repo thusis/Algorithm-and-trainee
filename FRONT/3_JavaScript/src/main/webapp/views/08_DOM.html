@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <title>08_DOM</title>
+        <style>
+            .area {
+                width: 50%;
+                border: 1px solid black;
+                min-height: 100px;
+            }
+            table {
+                text-align: center;
+            }
+            th {
+                border: 1px solid black;
+                width: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <a
+            href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API"
+            target="_blank"
+            >mdn: HTML DOM 설명 바로 가기</a
+        >
+
+        <h1>DOM (Document Object Model)</h1>
+        <h2>1️⃣ Node 객체</h2>
+        <h3>(1) 텍스트 노드가 있는 노드 생성</h3>
+        <button onclick="textNode();">실행확인</button>
+        <div class="area" id="textNodeDiv"></div>
+        <script>
+            const textNode = () => {
+                // element 생성
+                const title = document.createElement("h3");
+                const textNode = document.createTextNode("안녕");
+                title.appendChild(textNode);
+                document.getElementById("textNodeDiv").appendChild(title);
+            };
+        </script>
+
+        <h3>(2) 텍스트 노드가 없는 노드 생성</h3>
+        <button onclick="noTextNode();">실행확인</button>
+        <div class="area" id="noTextNodeDiv"></div>
+        <script>
+            const noTextNode = () => {
+                const imgTest = document.createElement("img");
+                imgTest.src =
+                    "https://www.telegraph.co.uk/content/dam/Pets/spark/royal-canin/happy-puppy.jpg?imwidth=1240";
+
+                imgTest.width = "150";
+                imgTest.height = "100";
+
+                imgTest.myProperty = "123";
+                imgTest.setAttribute("myProperty", "456");
+
+                document.getElementById("noTextNodeDiv").appendChild(imgTest);
+            };
+        </script>
+
+        <h2>innerHTML</h2>
+        <button onclick="innerHTMLTest();">실행확인</button>
+        <table id="board">
+            <tr>
+                <th>글 번호</th>
+                <th>글 제목</th>
+                <th>작성자</th>
+                <th>조회수</th>
+                <th>작성일</th>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <script>
+            const innerHTMLTest = () => {
+                const board = document.getElementById("board");
+
+                const num = 1;
+                const title = "제목입니다.";
+                const user = "user01";
+                const count = 1;
+                const date = new Date();
+
+                board.innerHTML +=
+                    "<tr><td>" + num +"</td>" +"<td>" +title + "</td>" +"<td>" +user +"</td>" +"<td>" +count +"</td>" +"<td>" +date.getFullYear() +"-" +(date.getMonth() + 1) +"-" +date.getDate() +"</td></tr>";
+            };
+        </script>
+
+        <h2>스타일 지정</h2>
+        <button onclick="giveStyle();">실행확인</button>
+        <div class="area" id="styleDiv"></div>
+        <script>
+            //버튼을 누르면 div의 배경은 까맣게, 모서리는 100px로 둥글게 변경(2초 동안 진행)
+            const giveStyle = () => {
+                const div = document.getElementById('styleDiv');
+                div.style.background="black";
+                div.style.borderRadius="100px";
+                div.style.transition='2s';
+            }
+        </script>
+
+        <h2>노드 삭제</h2>
+        <button onclick="deleteNode();">실행확인</button>
+        <div class="area" id="delDiv"></div>
+        <script>
+                const deleteNode = () => {
+                    document.getElementById('delDiv').remove();
+                }
+        </script>
+
+    </body>
+</html>

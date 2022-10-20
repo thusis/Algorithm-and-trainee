@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08 WINDOW객체</title>
+    <style>
+        div{
+            border: 1px solid black;            
+            justify-items: auto;
+            align-items: center;
+            width:70vw; padding:20px; margin:20px;
+            background-color: rgba(235, 235, 235, 0.192); 
+        }
+        .link{
+            display: flex;
+            width:45vh; margin:5px; padding:2px;
+            border-radius: 3px;
+            background-color: gold;
+            border:0px;
+        }
+        #intervalDiv, #countDiv{
+            border: 1px solid black;
+            width:40%; font-size:40px; color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>LECTURE08<br>WINDOW객체</h1>
+    <div>
+        <p>
+            window 객체는 자바스크립트의 최상위 객체이며 BOM과 DOM 으로 나뉨<br>
+            * BOM(Browser Object Model) : location, navigator, history, screen<br>
+            * DOM(Document Object Model) : document<br><br>
+    
+            <button><a href="https://developer.mozilla.org/ko/docs/Web/API/Window"><h6>mdn:window</h6></a></button>
+            <button><a href="https://developer.mozilla.org/ko/docs/Glossary/DOM"><h6>mdn:DOM</h6></a></button>
+        </p>
+    </div>
+   
+
+    <h2>1️⃣ window 객체</h2>
+    <div>
+        <p>브라우저 창에 대한 설정을 하는 객체</p>
+        <button onclick="test1();">실행1</button>
+        <button onclick="test2();">실행2</button>
+        <script>
+            const test1 = () => {
+//                window.open('01_JavaScript.html');
+                window.open('http://www.naver.com', 'naver', 'width=500, height=300');
+            }
+
+            const test2 = () => {
+                const pop = window.open('', 'myPopup', 'width=300, height=200');
+                pop.document.write("<html><body><h1>POP! POP!</h1></body></html>");
+            }
+        </script>
+    </div>
+
+    <h2>2️⃣ window 객체의 timer 메소드</h2>
+    <div>
+        <h4>[1] setTimeout()</h4>
+        <button onclick="setTimeoutTest();">실행확인</button>
+        <script>
+            const setTimeoutTest = () => {
+                const myWindow = window.open('', '', 'width=500, height=300');
+    
+                myWindow.alert('3초 후에 이 페이지는 종료됩니다.');
+                window.setTimeout(function(){
+                    myWindow.close();  
+                }, 3000);
+            }
+        </script>
+    </div>
+
+    <div>
+        <h4>[2] setInterval()</h4>
+        <button onclick="setIntervalTest();">실행확인</button>
+        <div id="intervalDiv" class="area"></div>
+        <script>
+            const setIntervalTest = () => {
+                const area = document.getElementById('intervalDiv');
+
+                window.setInterval(function(){
+                    const date = new Date();
+                    area.innerHTML = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+
+                }, 1000);
+            }
+        </script>
+
+    </div>
+
+    <div>
+        <h4>[3] clearInterval()</h4>
+        <button onclick="count3();">실행확인</button>
+        <div id="countDiv" class="area"></div>
+        <script>
+        const count3 = () => {
+            const area = document.getElementById('countDiv');
+            let count = 3;
+
+            const interval = window.setInterval(function(){
+                area.innerHTML = 'countdown : ' + count--;
+
+                if(count < 0){
+                    clearInterval(interval);
+                    area.innerHTML = '종료!';
+                }
+            }, 1000);
+
+        }
+        </script>
+    </div>
+
+
+
+    
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Regulae Expression</title>
+</head>
+<body>
+    <h1>정규표현식</h1>
+    <h2> 정규표현식의 객체 생성</h2>
+    <button onclick="test1();">확인하기</button>
+    <script>
+        const test1 =() => {
+            //1. new
+            //const regExp = new RegExp('script'); [O]
+            //const regExp = new RegExp(/scriipt/); //[O]
+            //2. 스크립트작성
+            //const regExp = 'script'; // [X] 일반적 String 문자열을 말하는 것 뿐이므로 이런식이면 안 됨.
+            const regExp = /script/; //[O]
+
+            // <정규표현식에서 자주 사용할 수 있는 메소드>
+            const str = 'javascript jquery ajax';
+            // [1] test
+            console.log(regExp.test(str));
+
+            //[2] exec : str에 들어간
+            console.log(regExp.exec(str));
+
+            //[3] match
+            console.log(str.match(regExp)) 
+            console.log(str.search(regExp)); 
+            console.log(str.replace(regExp));
+        }
+    </script>
+
+
+    <h2>1️⃣ $& 달러와 앙퍼센트. $`달러와 백틱. %' 퍼센티지와 싱글쿼테이션</h2>
+    <button onclick="test2();">실행확인</button>
+    <script>
+        const test2 = () => {
+            const regExp = /as/;
+            const str = 'javascript jquery ajax sass';
+
+            //제일 처음 일치하는 문자열
+            console.log(str.replace(regExp, '($&)')); // jav(as)cript jquery ajax sass
+            //제일 처음 일치하는 문자열의 직전 문자열까지 대체
+            console.log(str.replace(regExp, '($`)')); // jav(jav)cript jquery ajax sass
+            //제일 처음 일치하는 문자열의 직후부터 끝까지 대체
+            console.log(str.replace(regExp, "($')")); // jav(cript jquery ajax sass)cript jquery ajax sass
+        }
+    </script>
+
+    <h2>2️⃣()소괄호와 |</h2>
+    <button onclick="test3();">실행확인</button>
+    <script>
+        const test3 = () => {
+            const src = ['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일'];
+            
+            //화요일, 금요일, 일요일 선택
+            // const regExp = /(화요일|금요일|일요일)/; //화요일이거나 금요일이거나 일요일이면 true
+            const regExp = /(화|금|일)요일/; //위 코드를 아래처럼 작성할 수도 있다.
+
+            for(let i=0; i<src.length; i++){
+                console.log(src[i] + ":" + regExp.test(src[i]));
+            }
+
+        }
+    </script>
+
+    <h2>3️⃣플래그 문자</h2>
+    <button onclick="test4();">실행확인</button>
+
+    <p style="color:blue">(제대로 안 들어서 일단 임의로 내가 찾아옴) 출처는 <a href="https://ko.javascript.info/regexp-introduction" target="_blank">여기</a><br>
+    <ol>
+        <li>정규표현식은 pattern 과 flag로 구성</li>
+        <li><ul>Pattern
+            <li>긴 표현식 regexp = new RegExp("pattern", "flags");</li>
+            <li>짧은 표현식 regexp = /pattern/;
+                <p>단, /.../를 사용하면 문자열 템플릿 리터럴에서 ${...}를 사용했던 것처럼 중간에 표현식을 넣을 수 없다</p>
+            </li>
+        </ul></li>
+        <li>Flag
+            <ol>
+                <li>i
+                    대·소문자 구분 없이 검색.</li>
+                <li>g
+                   패턴과 일치하는 모든 것들을 찾습니다. g 플래그가 없으면 패턴과 일치하는 첫 번째 결과만 반환됩니다.</li>
+                <li>m
+                    다중 행 모드(multiline mode)를 활성화. \n 기능함. </li>
+                <li>s
+                    .이 개행 문자 \n도 포함하도록 ‘dotall’ 모드를 활성화합니다. </li>
+                <li>u
+                    유니코드 전체를 지원. 이 플래그를 사용하면 서로게이트 쌍(surrogate pair)을 올바르게 처리할 수 있습니다. </li>
+                <li>y
+                    문자 내 특정 위치에서 검색을 진행하는 ‘sticky’ 모드를 활성화. </li>
+            </ul>
+        </li>
+    </ol> </p>
+
+    <script>
+        const test4 = () => {
+            const str = 'JAvaScript JQuery Ajax\nJAvaScript JQuery AJax';
+            const regExp0 = /a/;
+            console.log(str.replace(regExp0, '($&)'));
+        }
+    </script>
+
+    <h2>4️⃣앵커문자</h2>
+    <button onclick="test5();">실행확인</button>
+    <script>
+        const test5 =() => {
+            const str1 = "JavaScript\nJQuery\nAjax";
+
+            const regExp1 = /^j/ig;
+            console.log(regExp1 + ":" + str1.replace(regExp1, '($&)')); 
+            //ig 라고 했을 때 : 대소문자 구분 없이 모든 것을 검색
+            //^(꺽쇠)를 넣었을 때: 문자열의 맨 앞만 찾는다.
+            ///^j/gi :(J)avaScript JQuery
+
+            const regExp2 = /^j/igm;
+            console.log(regExp2 + ":" + str1.replace(regExp2, '($&)')); ///^j/gim:(J)avaScript (J)Query 
+            //m 은 다중행모드를 활성화. \n이 기능하여 콘솔창에 뜨도록 함.
+
+            const str2 = "JavaScript\nJQuery\nShellScript\nAjax";
+            const regExp3 =/ipt$/g;
+            console.log(regExp3 + ":" + str2.replace(regExp3, '($&)'));///ipt$/g:JavaScript JQuery ShellScript Ajax
+            //$ 문자열의 맨 뒤를 의미
+
+        }
+    </script>
+
+    <h2>5️⃣ 수량문자</h2>
+    <p>
+        a*b  : a가 0개 이상이고 그 뒤에는 무조건 b가 나와야 한다.<br>
+        a+b : a가 1개 이상이고 뒤에 b가 나온다.<br>
+        a?b : a가 0개 또는 1개이고, 뒤에 b가 나온다.</p>
+    <button onclick="test6();">실행확인</button>
+    <script>
+        const test6 =() => {
+            const src = "aabc abc bc";
+            const regExp1 = /a*b/g;
+            const regExp2 = /a+b/g;
+            const regExp3 = /a?b/g;
+            console.log(regExp1 + ":" + src.replace(regExp1, '($&)'));
+            console.log(regExp2 + ":" + src.replace(regExp2, '($&)'));
+            console.log(regExp3 + ":" + src.replace(regExp3, '($&)'));
+        }
+    </script>
+
+    <h2>6️⃣{}를 이용해서 수량표현</h2>
+    <button onclick="test7();">실행확인</button>
+    <script>
+        const test7 = () => {
+            const src = 'AA ABA ABBA ABBBA';
+
+            const regExp11 = /AB*A/g; //앞뒤로 A가 있고, 그 사이에서 B는 0개 이상임
+            console.log(regExp11 + ":" + src.replace(regExp11, '($&)'));
+            const regExp12 = /AB{0,}A/g;
+            console.log(regExp12 + ":" + src.replace(regExp12, '($&)'));
+
+            const regExp21 = /AB+A/g;
+            console.log(regExp21 + ":" + src.replace(regExp21,'($&)'));
+            const regExp22 = /AB{1,}A/g;
+            console.log(regExp22 + ":" + src.replace(regExp22, '($&)'));
+
+            const regExp31 = /AB?A/g;
+            console.log(regExp31 + ":" + src.replace(regExp31, '($&)'));
+            const regExp32 = /AB{0,1}A/g;
+            console.log(regExp32 + ":" + src.replace(regExp32, '($&)'));
+        }
+    </script>
+
+    <h2>7️⃣ 메타문자와 []대괄호</h2>
+    <button onclick="test8();">실행확인</button>
+    <script>
+        const test8 = () => {
+            const str1 = "JavaScript JQuery Ajax";
+
+            const regExp1 = /[aj]/ig;
+            console.log(regExp1 + ":" + str1.replace(regExp1, '($&)'));
+
+            const regExp2 = /[^ag]/ig;
+            //대괄호 안에서의 꺽쇄는 (문자열 맨 앞을 찾는 게 아니라) ag를 제외하고 진행하겠다는 뜻
+            
+            const regExp3 = /[a-z]/ig;
+            console.log(regExp3+":"+str1.replace(regExp3,'($&)')); //소문자만 체크
+
+            const regExp4 = /[A-Z]/g;
+            console.log(regExp4 + ":" + str1.replace(regExp4, '($&)')); //대문자만 체크
+
+            const str2 = "123JavaScript";
+            const regExp5 = /[0-9]/g;
+            console.log(regExp5 + ":" + str2.replace(regExp5, '($&)')); // 숫자만 체크
+
+            const regExp6 = /[0-9a-z]/;
+            console.log(regExp6 + ":"+ str2.replace(regExp6, '($&)')); // 숫자와 영어 소문자 체크
+
+            //////////////////
+
+            const regExp1_1 = /\d/ig;
+            console.log(regExp1_1+":"+str1.replace(regExp1_1,'($&)'));
+
+            const regExp1_2 = /\D/ig;
+            console.log(regExp1_2+":"+str1.replace(regExp1_2,'[$&]'));
+
+            const regExp2_1 = /\w/g;
+            console.log(regExp2_1 + ":" + str1.replace(regExp2_1, '[$&]'));
+        }
+    </script>
+
+    <h2>8️⃣ 추가 메타 문자</h2>
+    <button onclick="test9();">실행확인</button>
+    <script>
+        const test9 = () => {
+            const src = "A1 B2 c3 d_4 e:5` ffGG77--__-- 가\n나\n다";
+
+            const regExp1 = /\d/g; 
+            console.log(regExp1 + ":" + src.replace(regExp1, '($&)')); ///\d/g:A(1) B(2) c(3) d_(4) e:(5)` ffGG(7)(7)--__-- 가 나 다
+            // " \d " 는 숫자만 나타내는 것이다.
+
+            const regExp2 = /\D/g; 
+            console.log(regExp2 + ":" + src.replace(regExp2, '($&)'));
+            // "\D" 는 숫자 빼고 모두 나타낸다.
+
+            const regExp3 = /\w/g; 
+            console.log(regExp3 + ":" + src.replace(regExp3, '($&)'));
+            // \w : 대소문자 + 숫자
+
+            const regExp4 = /\W/g; 
+            console.log(regExp4 + ":" + src.replace(regExp4, '($&)'));
+            // \W : 대소문자+숫자 빼고 모두
+
+            const regExp5 = /\s/g; 
+            console.log(regExp5 + ":" + src.replace(regExp5, '($&)'));
+            // \s : 공백
+
+            const regExp6 = /\S/g; 
+            console.log(regExp6 + ":" + src.replace(regExp6, '($&)'));
+            // \S : 공백 빼고 모두
+
+        }
+    </script>
+
+    <h2>9️⃣ Excaping</h2>
+    <button onclick="escape();">실행확인</button>
+    <script>
+        const escape = () => {
+            const src = "$12$ \\-\\ $34$";
+
+            const regExp1 = /$/; //맽 끝을 의미하는 앵커문자$
+            console.log(regExp1 + ":" + src.replace(regExp1, '($&)'));
+
+            const regExp2 = /\$/; //역슬래쉬(\)가 붙어서 이스케이프 문자로 달러 그 자체를 의미
+            console.log(regExp2 + ":" + src.replace(regExp2, '($&)'));
+            
+            const regExp3 = /\$/g; //플래그 문자 g를 넣으면 전체 모든 문자에 접근할 수 있다.
+            console.log(regExp3 + ":" + src.replace(regExp3, '($&)'));
+
+            //맨 끝에 있는 $만 표시
+            const regExp4 = /\$$/;
+            console.log(regExp4 + ":" + src.replace(regExp4, '($&)'));
+            //모든 \표시
+            const regExp5 = /\\/g;
+            console.log(regExp5 + ":" + src.replace(regExp5, '($&)'));
+        }
+    </script>
+
+    <h2>1️⃣ 포인트</h2>
+    <button onclick="point();">실행확인</button>
+    <script>
+        const point = () => {
+            const regExp1 = /a.b/;
+            console.log(regExp1.test('a b')); //T
+            console.log(regExp1.test('a아b')); //T
+            console.log(regExp1.test('a아뵤b')); //F
+
+            const regExp2= /xy./;
+            console.log(regExp2.test('xyz')); //T
+            console.log(regExp2.test('wxy')); //F
+            console.log(regExp2.test('xyab')); //T
+
+            const regExp3 = /in.$/; //in. 이 맨 끝에 있어야 함.
+            console.log(regExp3.test('going')); //T
+            console.log(regExp3.test('inner')); //F
+        }
+    </script>
+
+    <h2>예제</h2>
+    <h3>주민등록번호</h3>
+    <input type="text" id="ssn"><button onclick="checkSSN2();">실행확인</button>
+    <script>
+        const checkSSN =() => {
+            const ssn = document.getElementById('ssn').value;
+            console.log(ssn);
+            console.log(ssn.charAt(0));
+            let regExpF = /......-......./;
+            let regExpM = /......-......./;
+
+            if(ssn.charAt(0)=='0'|ssn.charAt(0)=='1'|ssn.charAt(0)=='2'){
+                regExpF = /......-4....../;
+                regExpM = /......-3....../;
+            } else{
+                regExpF = /......-2....../;
+                regExpM = /......-1....../;
+            }
+            let boolean = false;
+            if(regExpF.test(ssn) | regExpM.test(ssn)){
+                boolean = true;
+            }
+            if(boolean){
+                alert('확인되었습니다.');
+            } else {
+                alert('잘못된 접근입니다.')
+            }
+        }
+
+        const checkSSN2 =() => {
+            const ssn = document.getElementById('ssn').value;
+
+            const regExp =
+            /^\d{2}(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])-[1-4]\d{6}/;
+
+            if(regExp.test(ssn)){
+                alert('정상입력');
+            } else {
+                alert('잘못입력');
+            }
+        }
+    </script>
+
+
+</body>
+</html>

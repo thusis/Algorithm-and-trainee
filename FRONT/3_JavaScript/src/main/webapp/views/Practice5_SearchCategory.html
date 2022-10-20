@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>연습5search</title>
+    <style>
+        fieldset{width: 50%;}
+        div{
+            margin:10px; padding:10px;
+            width:50%;
+            background-color: lightgrey;
+        }
+    </style>
+</head>
+<body>
+    <h1>Practice5</h1>
+
+    <form id="main">
+        <fieldset>
+            <legend>검색할 항목을 선택하세요</legend>
+            <input type="radio" name="search" value="제목" onclick="titlesearch();" id="titleI">제목
+            <input type="radio" name="search" value="날짜" onclick="date();" id="dateI">날짜
+            <input type="radio" name="search" value="작성자" onclick="writer();" id="writerI">작성자
+        </fieldset>
+    </form>
+
+    <form id="titleF" style="display:none">
+        <div>
+            <span>검색할 제목을 입력하세요:</span><br>
+            <input type="text">
+            <input type="button" value="검색">
+        </div>
+    </form>
+
+    <form id="dateF" style="display:none">
+        <div>
+            <span>검색할 날짜를 선택하세요:</span><br>
+            <input type="date">
+            <input type="date">
+            <input type="button" value="검색">
+        </div>
+    </form>
+
+    <form id="writerF" style="display:none">
+        <div>
+            <span>검색할 작성자 아이디를 입력하세요</span><br>
+            <input type="text">
+            <input type="button" value="검색">
+        </div>
+    </form>
+
+    <script>
+        const titlei = document.getElementById('titleI')
+        const datei = document.getElementById('dateI')
+        const writeri = document.getElementById('writerI')
+
+        const titlef=document.getElementById('titleF');
+        const datef=document.getElementById('dateF');
+        const writerf=document.getElementById('writerF');
+
+        const titlesearch=()=>{
+            if(titlei.checked){
+                titlef.style.display="inline";
+                datef.style.display="none";
+                writerf.style.display="none";
+            } else{
+                titlef.style.display="none";
+            }   
+        }
+
+        const date=()=>{
+            if(datei.checked){
+                titlef.style.display="none";
+                datef.style.display="inline";
+                writerf.style.display="none";
+            } else{
+                datef.style.display="none";
+            }   
+        }
+
+        const writer=()=>{
+            if(writeri.checked){
+                titlef.style.display="none";
+                datef.style.display="none";
+                writerf.style.display="inline";
+            } else{
+                writerf.style.display="none";
+            }   
+        }
+
+    </script>
+
+
+
+
+    
+</body>
+</html>
