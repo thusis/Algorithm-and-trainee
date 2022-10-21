@@ -37,6 +37,7 @@
         <h4><a href=""></a></h4>
     </div>
     <script>
+
         const arr = [ //검색 포털 주소 객체를 담은 배열 arr 생성
             {name: '네이버', link:'https://www.naver.com'},
             {name: '구글', link:'https://www.google.com'},
@@ -114,6 +115,8 @@
             $('#nam').after('<li id="do">도대담</li>');
             $('<li id="do">도대담</li>').insertAfter('#nam');
         }
+
+
     </script>
 
     <h2>3️⃣ 객체 복제</h2>
@@ -127,7 +130,9 @@
             console.log($('#urlDiv').clone());
             $('#cloneDiv').html($('#urlDiv').clone());
             $('#urlDiv').clone().appendTo('#cloneDiv');
+
         });
+
 
     </script>
 
@@ -160,7 +165,7 @@
             <li>yellowgreen</li>
         </ul>
     </div>
-    <button onclick="return3();">되돌리기3</button>
+    <button onclick="return3();" disabled>되돌리기3</button>
 
     <script>
         let removeVal;
@@ -193,19 +198,20 @@
         });
 
         const return1 = () => {
-                $('#colorDiv').append(removeVal);
-            //되돌리기 가능, 데이터는 유지, 이벤트는 삭제
-            }
+            $('#colorDiv').append(removeVal);
+        //되돌리기 가능, 데이터는 유지, 이벤트는 삭제
+        }
 
-            const return2 = () => {
-                $('#colorDiv2').append(detachVal);
-            //되돌리기 가능, 데이터 유지, 이벤트도 유지
-            }
+        const return2 = () => {
+            $('#colorDiv2').append(detachVal);
+        //되돌리기 가능, 데이터 유지, 이벤트도 유지
+        }
 
-            const return3 = () => {
-                $('#colorDiv3').append(emptyVal);
-            // empty() 는 return 만 해줘요. 재사용할 수 없어요
-            }
+        const return3 = () => {
+            $('#colorDiv3').append(emptyVal);
+        // empty() 는 return 만 해줘요. 재사용할 수 없어요
+        }
+        
     </script>
 
     

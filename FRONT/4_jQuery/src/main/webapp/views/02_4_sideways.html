@@ -35,6 +35,8 @@
             $('h4').prev().css({'background': 'red', 'color':'white'});
             $('h4').prevAll().css({'background': 'beige', 'color':'red'});
             $('h4').prevUntil('p').css('border', 'double');
+
+            $('h4').siblings().css({'color':'red', 'border':'2px solid red'});
         })
     </script>
 
@@ -116,12 +118,31 @@
                     const age = tdNodes.eq(1).text();
                     const hobby = tdNodes.eq(2).text();
 
-                    $('#selectName').text(name);
-                    $('#selectAge').text(age);
+                   $('#selectName').text(name);
+                   $('#selectAge').text(age);
                     $('#selectHobby').text(hobby);
                  }
             }
         });
+
+        // $(function(){
+        //     const trArr=document.getElementsByTagName('tr');
+        //     for(const i in trArr){
+        //         trArr[i].onclick = function(){
+        //             console.log($(this));
+        //             const tdNodes = $(this).children('td');
+        //             console.log(tdNodes);
+
+        //             const name = tdNodes.eq(0).text();
+        //             const age = tdNodes.eq(1).text();
+        //             const hobby = tdNodes.eq(2).text();
+
+        //             $('#selectName').text(name);
+        //             #('#selectAge').text(age);
+        //             #('')
+        //         }
+        //     }
+        // })
     </script>
 
 

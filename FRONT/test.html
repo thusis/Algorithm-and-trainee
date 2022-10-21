@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src = "https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <style>
+        div{
+            display:inline-block;
+            padding:10px;
+            margin:10px;
+            background-color: bisque;
+        }
+        #clock, #start{
+            display:block;
+        }
+    </style>
+</head>
+<body>
+    <div id="clock"> 시간 </div>
+
+    <div>시간 출력 시작</div>
+    <div>red</div>
+    <div>orange</div>
+    <div>yellow</div>
+    <div>green</div>
+    <div>blue</div>
+
+    <script>
+        const styleClock = {
+            'border': '1px solid black',
+            'width':'200px',
+            'height':'50px',
+            'font-size':'30px' ,
+            'text-align': 'center'
+        }
+        $('#clock').css(styleClock);
+   </script>
+<br>
+3. 와이어 프레임을 보고 화면을 구성한 후<br>
+- 시간이 표시될 div에 'clock'이라는 id 추가<br>
+- 시간 출력 시작 버튼에 'start'라는 id 추가<br>
+- 색을 나타낸 모든 버튼에 'color'라는 class 추가<br>
+
+<script>
+    $('div').eq(0).attr('id','clock');
+    $('div').eq(1).attr('id','start');
+    $('#start').nextAll().attr('class','color');
+    //document.getElementsByTagName('div')
+    // console.log(document.getElementsByTagName('div'));
+
+</script>
+
+4. id가 start인 요소가 클릭된 경우 현재 시,분,초를 id가 start인 요소에 출력<br>
+시간 표시 예시) 10 : 10 : 15<br>
+
+<script>
+    date = new Date();
+    hours = date.getHours();
+    minutes = date.getMinutes();
+    seconds = date.getSeconds();
+    console.log(hours+":"+minutes+":"+seconds);
+    $(function(){
+        $('#start').click(function(){
+            $('#clock').html(hours+":"+minutes+":"+seconds);
+        })
+
+    })
+</script>
+
+5. 색을 나타내는 버튼 클릭 시 시간이 표시되는 영역의 배경을<br>
+클릭한 버튼에 적힌 색으로 변경.<br>
+
+<script>
+    $(function(){
+        $('.color').click(function(){
+            let clr = $(this).html();
+            $('#clock').css('backgroundColor',clr);
+        })
+    })
+</script>
+
+
+</body>
+</html>
