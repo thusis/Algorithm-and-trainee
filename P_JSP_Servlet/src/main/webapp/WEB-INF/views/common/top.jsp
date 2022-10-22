@@ -18,9 +18,7 @@
 	<c:set var="contextPath" value="${ pageContext.servletContext.contextPath }" scope="application"></c:set>
 	<h1 align="center">
 		<a href="${ contextPath }">
-
-		<img src="../img/image1.jpg" alt="image1"/>
-
+<!-- 		<img src="WEB-INF/views/img/image1.jpg" alt="image1"/> -->
 		Squirrel the Sorcery</a>
 	</h1>
 

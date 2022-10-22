@@ -6,6 +6,21 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+<style>
+	.mainDiv{border: 1px solid black;}
+	#mainDiv{margin: 100px;}
+	#mainDiv>table{width:100%; border-collapse: collapse;}
+	#cell1, #cell2{padding: 5px; border: 1px solid black;}
+	#cell1{text-align: center;}
+	#cell1 *{margin: 3px;}
+	#cell1 select, #cell1 input[name=title], #cell1 button{height: 30px;}
+	#cell1 select{width : 80px;}
+	#cell2>table{width: 100%;}
+	#cell2>table th{border-bottom: 1px solid black;}
+	#cell2>table *{text-align: center; padding: 3px;}
+	#cell2>table tfoot td{text-align: right;}
+	#moreBoard:hover{font-weight: bold; text-decoration: underline; cursor: pointer;}
+</style>
 </head>
 <body>
 
