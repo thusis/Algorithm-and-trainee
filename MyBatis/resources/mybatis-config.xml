@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.orh/DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!-- ※※순서 맞춰줘야한다.
+	The content of element type "configuration" must match 
+ 	" (properties?,settings?,typeAliases?,typeHandlers?,objectFactory?,objectWrapperFactory?,
+ 	reflectorFactory?,plugins?,environments?,databaseIdProvider?,mappers?)".
+ -->
+ 
+	<properties resource="/driver.properties"/>
+
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+<!-- 		value 에 들어가는 null은 항상 대문자 null이어야 함 -->
+	</settings>
+
+	<!-- DB에 연결할 설정에 대한 정보 선언 -->
+	<environments default="development">
+		<environment id="development">
+		
+			<!-- 트랜잭션을 누가 관리할 것인가에 대한 설정 -->
+			<!-- 
+				JDBC	: 직접 rollback, commit 진행 ( 수동 진행 )
+				MANAGED	: 트랜잭션에 대해 직접적 영향 행사X (자동), 컨테이너가 트랜젝션의 모든 생명주기 관리
+			 -->
+			 
+			<transactionManager type="JDBC"/>
+			
+			<!-- DB 접속에 관한 정보들을 넣는 태그 -->
+			<!-- 
+				UNPOOLED	: DB요청이 올 때마다 실시간으로 커넥션 객체를 열고 닫음
+							  미리 커넥션 객체를 만들어놓는 방식이 아니기 때문에 느릴 수 있음
+				POOLED		: 커넥션 객체들을 미리 만들어 놓고 꺼내쓰며 관리하는 방식으로 
+							  객체를 만드는데 시간을 줄일 수 있음
+			 -->
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}"/>
+				<property name="url" value="${url}"/>
+				<property name="username" value="${username}"/>
+				<property name="password" value="${password}"/>
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+		<mapper resource="mappers/member-mapper.xml"/>
+	</mappers>
+	
+</configuration>

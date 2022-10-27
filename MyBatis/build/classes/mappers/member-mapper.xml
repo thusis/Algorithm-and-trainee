@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="memberMapper">
+
+<!-- 	<select id="loginMember" parameterType="member.model.vo.Member"  -->
+<!-- 	resultType="member.model.vo.Member"> -->
+<!-- 		SELECT * FROM MEMBER WHERE USER_ID=#{userId} AND USER_PWD=#{userPwd} -->
+<!-- 	</select> -->
+<!-- 	
+		(1) id는 mapper의 고유 식별자
+		(2) mapper에서는 띄어쓰기해도, 줄바꿈해도 괜찮다.
+		(3) mapper의 namespace 속성을 이용해 이름을 지정해주고, DAO 에서 .(온점)으로 구분하기
+		(4) parameterType 안에 매개변수로 넘긴 클래스(데이터)의 풀네임을 적어준다
+		(5) 대입할 데이터의 '필드명'을 #{} 안에 적어준다. #말고 $써도 되는데 EL이랑 헷갈리니까 #써준다
+		(6) resultSet에 대한 컬럼명과 model.vo.Member의 필드명이 달라 매칭되지 않는다.   -->
+
+	<resultMap type="member.model.vo.Member" id="memberResultSet">
+		<id column="USER_ID" property="userId"/>
+		<result column="USER_PWD" property="userPwd" />
+		<result column="USER_NAME" property="userName" />
+		<result column="NICKNAME" property="nickName" />
+		<result column="EMAIL" property="email" />
+		<result column="BIRTHDAY" property="birthDay" />
+		<result column="GENDER" property="gender" />
+		<result column="PHONE" property="phone" />
+		<result column="ADDRESS" property="address" />
+		<result column="ENROLL_DATE" property="enrollDate" />
+		<result column="UPDATE_DATE" property="updateDate" />
+		<result column="M_STATUS" property="mStatus" />
+				
+	</resultMap>
+
+<!-- 
+		(1) resultSet에 대한 컬럼명과 model.vo.Member의 필드명이 달라 매칭되지 않는 문제의 해결을 위해 resultMap 태그 생성
+		(2) resultMap의 type 에는 넘어갈 데이터(객체)타입, id에는 고유식별자 지정
+		(3) id : PRIMARY KEY(: NOT NULL + UNIQUE, 복합(키) 가능) 제약을 가진 컬럼,
+		(4) result : primary key 이외의 컬럼
+		
+ -->
+	
+	<select id="loginMember" parameterType="member.model.vo.Member" resultMap="memberResultSet">
+		SELECT * FROM MEMBER WHERE USER_ID=#{userId} AND USER_PWD=#{userPwd}
+	</select>
+	
+	<insert id="insertMember" parameterType="member.model.vo.Member">
+		INSERT INTO MEMBER 
+		VALUES(#{userId}, #{userPwd}, #{userName}, #{nickName}, #{email}, 
+			   #{birthDay}, #{gender}, #{phone}, #{address}, SYSDATE, SYSDATE, default)
+	</insert>
+
+<!-- 		INSERT INTO MEMBER -->
+<!-- 		VALUES( #{getUserId()}, #{getUserPwd()}, #{getUserName()}, #{getNickName()}, -->
+<!-- 		 #{getEmail()}, #{getBirthDay()}, #{getGender()}, #{getPhone()}, #{getAddress()}, default, default, default ) -->
+
+	<update id="updateMember" parameterType="member.model.vo.Member">
+		UPDATE MEMBER
+		SET USER_NAME=#{userName}, NICKNAME=#{nickName}, EMAIL=#{email}, BIRTHDAY=#{birthDay},
+			GENDER=#{gender}, PHONE=#{phone}, ADDRESS=#{address}, UPDATE_DATE=sysdate
+			<if test="userPwd != '' ">
+				, USER_PWD=#{userPwd}
+			</if>
+		WHERE USER_ID=#{userId}
+	</update>
+	
+	<update id="deleteMember" parameterType="String">
+		UPDATE MEMBER SET M_STATUS = 'N' WHERE USER_ID=	</update>
+
+</mapper>
