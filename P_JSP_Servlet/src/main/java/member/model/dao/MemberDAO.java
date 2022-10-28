@@ -34,7 +34,7 @@ public class MemberDAO {
 		
 		try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, m.getUserId);
+			pstmt.setString(1, m.getUserId());
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
