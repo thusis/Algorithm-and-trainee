@@ -14,6 +14,8 @@
 	<div align="center">
 		<img src="resources/mybatis.PNG">
 	</div>
+	
+	어디를 어떻게 수정해야 할지 고민되네..
 
 </body>
 </html>
