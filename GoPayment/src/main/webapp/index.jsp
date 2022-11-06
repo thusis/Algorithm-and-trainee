@@ -1,5 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +14,7 @@
     <script type="text/javascript" src = "https://code.jquery.com/jquery-3.6.1.min.js"></script>
 
     <!-- iamport.payment.js -->
-    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-{SDK-ìµœì‹ ë²„ì „}.js"></script>
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-{SDK-ÃÖ½Å¹öÀü}.js"></script>
 </head>
 <body>
 
@@ -36,7 +38,7 @@
         <div class="container d-flex flex-wrap justify-content-center">
             <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
             <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-            <span class="fs-4">ê²°ì œì°½</span>
+            <span class="fs-4">°áÁ¦Ã¢</span>
             </a>
             <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
             <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
@@ -45,7 +47,8 @@
     </header>
 
     <div class="container">
-        <button class="btn btn-info btn-lg" onclick="requestPay();">ê²°ì œí•˜ê¸°</button>
+    	<input type="text" id="product">
+        <button class="btn btn-info btn-lg" id="gopayBtn" onclick="requestPay();">°áÁ¦ÇÏ±â</button>
     </div>
 
 
@@ -54,50 +57,53 @@
     <script>
 
         /**
-         * 1. í—¤ë“œì— ì•„ì„í¬íŠ¸ ì œì´ì¿¼ë¦¬ì™€ ì•„ì„í¬íŠ¸ë¼ì´ë¸ŒëŸ¬ë¦¬ ì¶”ê°€
-         * 2. ê²°ì œì¤€ë¹„
-         * ê°€ë§¹ì  ì‹ë³„ì½”ë“œ
+         * 1. Çìµå¿¡ ¾ÆÀÓÆ÷Æ® Á¦ÀÌÄõ¸®¿Í ¾ÆÀÓÆ÷Æ®¶óÀÌºê·¯¸® Ãß°¡
+         * 2. °áÁ¦ÁØºñ
+         * °¡¸ÍÁ¡ ½Äº°ÄÚµå
          **/
-        var IMP = window.IMP;
-        IMP.init("{imp65827617}");
+        IMP.init("imp65827617");
 
         /**
-         * 2. ê²°ì œ ìš”ì²­í•˜ê¸°
-         * IMP.request_payë¥¼ í˜¸ì¶œí•˜ê¸° ì „ì— ì„œë²„ì—ì„œ ë°ì´í„°ë² ì´ìŠ¤ì— ì£¼ë¬¸ ë ˆì½”ë“œë¥¼ ìƒì„±í•˜ì—¬ í•´ë‹¹ ë ˆì½”ë“œì˜ ì£¼ë¬¸ë²ˆí˜¸ë¥¼ param.merchant_uid ì— ì§€ì •í•˜ê¸°ë¥¼ ê¶Œì¥
+         * 2. °áÁ¦ ¿äÃ»ÇÏ±â
+         * IMP.request_pay¸¦ È£ÃâÇÏ±â Àü¿¡ ¼­¹ö¿¡¼­ µ¥ÀÌÅÍº£ÀÌ½º¿¡ ÁÖ¹® ·¹ÄÚµå¸¦ »ı¼ºÇÏ¿© ÇØ´ç ·¹ÄÚµåÀÇ ÁÖ¹®¹øÈ£¸¦ param.merchant_uid ¿¡ ÁöÁ¤ÇÏ±â¸¦ ±ÇÀå
          **/
 
         function requestPay(){
-            //IMP.request_pay(param, callback) ê²°ì œì°½ í˜¸ì¶œ
+        	//IMP.request_pay(param, callback) °áÁ¦Ã¢ È£Ãâ
             IMP.request_pay({ //param
                 pg: "html5_inicis",
                 pay_method: "card",
-                merchant_uid: "ORD20180131-0000011",
-                name: "ë…¸ë¥´ì›¨ì´ íšŒì „ ì˜ì",
+                merchant_uid: "MERCHANT_"+new Date().getTime(), //ÇØ´ç·¹ÄÚµåÀÇ ÁÖ¹®¹øÈ£
+                name: "°áÁ¦Å×½ºÆ®",
                 amount: 1200,
-                buyer_email: "gildong@gmail.com",
-                buyer_name: "í™ê¸¸ë™",
-                buyer_tel: "010-4242-4242",
-                buyer_addr: "ì„œìš¸íŠ¹ë³„ì‹œ ê°•ë‚¨êµ¬ ì‹ ì‚¬ë™",
-                buyer_postcode: "01181"
+                buyer_email: "user01@te.st",
+                buyer_name: "±è°¡¶÷",
+                buyer_tel: "010-1234-1234",
+                buyer_addr: "¼­¿ïÆ¯º°½Ã °­³²±¸ ½Å»çµ¿",
+                buyer_postcode: "12345"
             }, function(rsp){ //callback
-                if(rsp.succexx){
+                if(rsp.success){
                     /**
-                     * 3. ê²°ì œ ì •ë³´ ì „ë‹¬í•˜ê¸°
+                     * 3. °áÁ¦ Á¤º¸ Àü´ŞÇÏ±â
                      **/
-                    jQuery.ajax({
-                        url:"${contextPath}/success.py",
-                        method:"POST",
-                        headers:{ "Content-Type":"application/json"},
-                        data:{
-                            imp_uid: rsp.imp_uid,
-                            merchant_uid: rsp.merchant_uid
-                        }
-                    }).done(function(data){
-                        //ê°€ë§¹ì  ì„œë²„ ê²°ì œ API ì„±ê³µì‹œ ë¡œì§
-                    })
-                    console.log("ê²°ì œê°€ ì„±ê³µí•˜ì˜€ìŠµë‹ˆë‹¤.")
+                    var msg = '°áÁ¦°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù.';
+                    alert(msg);
+                    location.href='endpayment.do';
+//                     jQuery.ajax({
+//                         url:"endpayment.py",
+//                         method:"POST",
+//                         headers:{"Content-Type":"application/json"},
+//                         data:{
+//                         	productName: document.getElementById('product').value,
+//                             imp_uid: rsp.imp_uid,
+//                             merchant_uid: rsp.merchant_uid
+//                         }
+//                     }).done(function(data){
+//                         //°¡¸ÍÁ¡ ¼­¹ö °áÁ¦ API ¼º°ø½Ã ·ÎÁ÷
+//                     })
+//                     console.log("°áÁ¦°¡ ¼º°øÇÏ¿´½À´Ï´Ù.")
                 } else {
-                    alert("ê²°ì œê°€ ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.")
+                    alert("°áÁ¦°¡ ½ÇÆĞÇß½À´Ï´Ù.")
                 }});
         }
 
