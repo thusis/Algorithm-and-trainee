@@ -6,6 +6,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import member.model.exception.MemberException;
+import member.model.service.MemberService;
+import member.model.vo.Member;
 
 /**
  * Servlet implementation class LoginServlet
@@ -26,9 +31,30 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String userId = request.getParameter("id");
+		String userPwd = request.getParameter("password");
+		
+		Member m = new Member();
+		m.setUserId(userId);
+		m.setUserPwd(userPwd);
+		
+		Member loginUser = new MemberService().selectMember(m);
+		
+		try {
+			Member loginUser = new MemberService().selectMember(m);
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("loginUser", loginUser);
+			session.setMaxInactiveInterval(600);
+			
+			response.sendRedirect(request.getContextPath());
+		} catch (MemberException e) {
+			request.setAttribute("message", e.getMessage());
+			request.getRequestDispatcher("WEB-INF/views/common/errorPage.jsp").forward(request, response);
+		}
+
 	}
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
