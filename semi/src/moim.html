@@ -546,6 +546,32 @@
     </main>
 
 <!-- 	==========댓글===========-->
+
+		<div class="input-group">
+		<span class="input-group-text">REPLY<br>CONTENT</span>
+		<textarea class="form-control" rows="3" id="replyContent" style="resize: none;"></textarea>
+		<button class="btn btn-outline-success btn-lg" id="replySubmit" type="button" <c:if test="${ empty loginUser }">disabled</c:if>>SUBMIT</button>
+	</div>
+	<br>
+	<table class="table">
+		<thead>
+			<tr>
+				<th width="130px">작성자</th>
+				<th>작성내용</th>
+				<th width="130px">작성일자</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${list }" var="r">
+				<tr>
+					<td>${r.nickName }</td>
+					<td>${r.replyContent }</td>
+					<td>${r.replyModifyDate }</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table> 
+					
 	<div class="container">
 		<div class="row">
 			<div class="col-5"></div>
