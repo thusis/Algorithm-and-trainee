@@ -31,6 +31,16 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
+  <!-- data picker --->
+  <!-- css -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+  
+  <!-- js -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <!-- data picker end--->
+
   <!-- =======================================================
   * Template Name: Impact - v1.1.1
   * Template URL: https://bootstrapmade.com/impact-bootstrap-business-website-template/
@@ -159,6 +169,44 @@
                       </div>
                       <div class="col"></div>
                   </div>
+
+                  <!--============== 데이터 레인지 =====================-->
+                  <div class="mb-3 row align-items-center">
+                    <div class="col-lg-2 bn_txt_strong ">모집기간</div>
+
+                    <div class="col input-group">
+                      <input type="text" class="form-control" value=startdate+"부터" id="daterangepicker" name="moimdate">
+                    </div>
+
+                    <div class="col">
+                    </div>
+                  </div>
+
+                  <script>
+                    let today = new Date();
+                    let startdate = today.getFullYear()+'-'+today.getMonth()+'-'+today.getDate();
+
+                    $("#daterangepicker").daterangepicker({
+                      locale: {
+                        "separator": " 부터 ",                     // 시작일시와 종료일시 구분자
+                        "format": 'YYYY-MM-DD',     // 일시 노출 포맷
+                        "applyLabel": "확인",                    // 확인 버튼 텍스트
+                        "cancelLabel": "취소",                   // 취소 버튼 텍스트
+                        "daysOfWeek": ["일", "월", "화", "수", "목", "금", "토"],
+                        "monthNames": ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"]
+                        },
+                        //timePicker: true,                        // 시간 노출 여부
+                        //showDropdowns: true,                     // 년월 수동 설정 여부
+                        autoApply: false                         // 확인/취소 버튼 사용여부
+                        //timePicker24Hour: true,                  // 24시간 노출 여부(ex> true : 23:50, false : PM 11:50)
+                        //timePickerSeconds: true,                 // 초 노출 여부
+                        //singleDatePicker: true                   // 하나의 달력 사용 여부
+                    });
+
+                    $('.applyBtn').click(function(){
+                      alert(document.getElementById('daterangepicker').value);                     
+                    });
+                  </script>
               
                   <div class="mb-3 row align-items-center">
                       <div class="col-lg-2 bn_txt_strong ">모임지역</div>
